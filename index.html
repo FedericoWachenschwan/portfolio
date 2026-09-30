@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- ===== CONFIGURACIÓN DE LA PÁGINA Y SEO ===== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federico Wachenschwan | Programador Junior</title>
+    <meta name="description" content="Portfolio de Federico Wachenschwan, programador junior en formación. Estudiante de la Tecnicatura Universitaria en Programación (UTN). Proyectos en C++, C# / .NET y SQL.">
+    <meta name="keywords" content="Federico Wachenschwan, programador junior, portfolio, C++, C#, .NET, SQL Server, Windows Forms, SFML, UTN, Tecnicatura en Programación">
+    <meta name="author" content="Federico Wachenschwan">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+    <!-- Tipografías: Inter para el texto y JetBrains Mono para los detalles de "código" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <!-- ===== ENCABEZADO: MENÚ FIJO CON LINKS A CADA SECCIÓN ===== -->
+    <header class="encabezado">
+        <nav class="menu" aria-label="Menú principal">
+            <a href="#inicio" class="menu-logo" aria-label="Ir al inicio">
+                <span class="menu-logo-llave">&lt;</span>FW<span class="menu-logo-llave">/&gt;</span>
+            </a>
+
+            <!-- Botón hamburguesa (solo se ve en el celular) -->
+            <button class="boton-hamburguesa" id="boton-hamburguesa" aria-label="Abrir el menú" aria-expanded="false" aria-controls="menu-links">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="menu-links" id="menu-links">
+                <li><a href="#sobre-mi" data-i18n="menu.sobre">Sobre mí</a></li>
+                <li><a href="#conocimientos" data-i18n="menu.conocimientos">Conocimientos</a></li>
+                <li><a href="#proyectos" data-i18n="menu.proyectos">Proyectos</a></li>
+                <li><a href="#redes" data-i18n="menu.redes">Redes</a></li>
+                <li><a href="#contacto" data-i18n="menu.contacto">Contacto</a></li>
+                <li><button class="boton-idioma" id="boton-idioma" aria-label="Cambiar el idioma a inglés">EN</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ===== SECCIÓN INICIO: PRESENTACIÓN CON FOTO (HERO) ===== -->
+        <section class="seccion-inicio" id="inicio">
+            <div class="contenedor inicio-contenido">
+                <div class="inicio-texto">
+                    <p class="inicio-saludo" data-i18n="inicio.saludo">Hola, soy</p>
+                    <h1 class="inicio-nombre">Federico Wachenschwan</h1>
+                    <p class="inicio-titulo" data-i18n="inicio.titulo">Programador junior en formación · C++ · C# / .NET · SQL</p>
+                    <p class="inicio-descripcion" data-i18n="inicio.descripcion">Estudio la Tecnicatura Universitaria en Programación en la UTN. Me gusta entender cómo funcionan las cosas por dentro y escribir código claro y ordenado.</p>
+                    <div class="inicio-botones">
+                        <a href="#proyectos" class="boton boton-principal" data-i18n="inicio.verProyectos">Ver proyectos</a>
+                        <a href="#contacto" class="boton boton-secundario" data-i18n="inicio.contactame">Contactame</a>
+                        <a href="cv/Federico_Wachenschwan_CV.pdf" class="boton boton-secundario boton-descargar-cv" download>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14" /></svg>
+                            <span data-i18n="inicio.cv">Descargar CV</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="inicio-foto">
+                    <img src="img/foto-perfil.jpg" alt="Foto de Federico Wachenschwan" width="600" height="600">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN SOBRE MÍ: INFORMACIÓN GENERAL ===== -->
+        <section class="seccion seccion-sobre-mi" id="sobre-mi">
+            <div class="contenedor">
+                <h2 class="titulo-seccion"><span class="titulo-numero">01.</span> <span data-i18n="sobre.titulo">Sobre mí</span></h2>
+                <div class="sobre-mi-contenido">
+                    <p class="sobre-mi-texto" data-i18n="sobre.texto">Soy estudiante de la Tecnicatura Universitaria en Programación de la UTN. En la carrera trabajé con C++ (programación orientada a objetos, memoria dinámica, archivos) y con C# y .NET (aplicaciones de escritorio con Windows Forms y bases de datos SQL Server). Junto a mi grupo desarrollé Daetherial, un juego 2D en C++ con SFML. Me interesan el desarrollo de software y los videojuegos, y busco mi primera experiencia profesional como desarrollador.</p>
+                    <ul class="sobre-mi-datos">
+                        <li><span class="dato-icono" aria-hidden="true">🎓</span> <span data-i18n="sobre.dato1">TUP — UTN (2024 – en curso)</span></li>
+                        <li><span class="dato-icono" aria-hidden="true">📍</span> <span data-i18n="sobre.dato2">Buenos Aires, Argentina</span></li>
+                        <li><span class="dato-icono" aria-hidden="true">🌐</span> <span data-i18n="sobre.dato3">Inglés: escrito avanzado · oral intermedio</span></li>
+                        <li><span class="dato-icono" aria-hidden="true">💼</span> <span data-i18n="sobre.dato4">Buscando mi primera experiencia en desarrollo</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN CONOCIMIENTOS: AGRUPADOS POR CATEGORÍA ===== -->
+        <section class="seccion seccion-conocimientos" id="conocimientos">
+            <div class="contenedor">
+                <h2 class="titulo-seccion"><span class="titulo-numero">02.</span> <span data-i18n="conocimientos.titulo">Conocimientos</span></h2>
+                <div class="grilla-conocimientos">
+
+                    <!-- CONOCIMIENTOS: LENGUAJES -->
+                    <article class="tarjeta-conocimiento">
+                        <h3><span class="conocimiento-icono" aria-hidden="true">&lt;/&gt;</span> <span data-i18n="conocimientos.lenguajes">Lenguajes</span></h3>
+                        <ul class="lista-chips">
+                            <li class="chip">C++</li><li class="chip">C#</li><li class="chip">SQL</li>
+                            <li class="chip">HTML</li><li class="chip">CSS</li><li class="chip" data-i18n="conocimientos.js">JavaScript (básico)</li>
+                        </ul>
+                    </article>
+
+                    <!-- CONOCIMIENTOS: PARADIGMAS Y CONCEPTOS -->
+                    <article class="tarjeta-conocimiento">
+                        <h3><span class="conocimiento-icono" aria-hidden="true">{ }</span> <span data-i18n="conocimientos.paradigmas">Paradigmas y conceptos</span></h3>
+                        <ul class="lista-chips">
+                            <li class="chip" data-i18n="conocimientos.poo">Programación orientada a objetos</li>
+                            <li class="chip" data-i18n="conocimientos.memoria">Memoria dinámica</li>
+                            <li class="chip" data-i18n="conocimientos.estructuras">Estructuras de datos y algoritmos (A*)</li>
+                            <li class="chip" data-i18n="conocimientos.archivos">Archivos de texto y binarios</li>
+                            <li class="chip" data-i18n="conocimientos.patrones">Patrones: máquina de estados, capas</li>
+                        </ul>
+                    </article>
+
+                    <!-- CONOCIMIENTOS: FRAMEWORKS Y LIBRERÍAS -->
+                    <article class="tarjeta-conocimiento">
+                        <h3><span class="conocimiento-icono" aria-hidden="true">⧉</span> <span data-i18n="conocimientos.frameworks">Frameworks y librerías</span></h3>
+                        <ul class="lista-chips">
+                            <li class="chip">.NET Framework</li><li class="chip">Windows Forms</li>
+                            <li class="chip">ADO.NET</li><li class="chip">SFML</li>
+                        </ul>
+                    </article>
+
+                    <!-- CONOCIMIENTOS: BASES DE DATOS -->
+                    <article class="tarjeta-conocimiento">
+                        <h3><span class="conocimiento-icono" aria-hidden="true">⛁</span> <span data-i18n="conocimientos.bases">Bases de datos</span></h3>
+                        <ul class="lista-chips">
+                            <li class="chip">SQL Server</li><li class="chip">SQL Server Management Studio</li>
+                            <li class="chip" data-i18n="conocimientos.abm">Consultas y ABM</li>
+                        </ul>
+                    </article>
+
+                    <!-- CONOCIMIENTOS: HERRAMIENTAS -->
+                    <article class="tarjeta-conocimiento">
+                        <h3><span class="conocimiento-icono" aria-hidden="true">⚙</span> <span data-i18n="conocimientos.herramientas">Herramientas</span></h3>
+                        <ul class="lista-chips">
+                            <li class="chip">Git y GitHub</li><li class="chip">Visual Studio</li><li class="chip">VS Code</li>
+                            <li class="chip">Code::Blocks</li><li class="chip">PSeInt</li><li class="chip">draw.io (UML)</li><li class="chip">Tiled</li>
+                        </ul>
+                    </article>
+
+                    <!-- CONOCIMIENTOS: METODOLOGÍAS -->
+                    <article class="tarjeta-conocimiento">
+                        <h3><span class="conocimiento-icono" aria-hidden="true">⇄</span> <span data-i18n="conocimientos.metodologias">Metodologías</span></h3>
+                        <ul class="lista-chips">
+                            <li class="chip" data-i18n="conocimientos.equipo">Trabajo en equipo con control de versiones</li>
+                            <li class="chip" data-i18n="conocimientos.jira">Jira (organización de tareas)</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN PROYECTOS ===== -->
+        <section class="seccion seccion-proyectos" id="proyectos">
+            <div class="contenedor">
+                <h2 class="titulo-seccion"><span class="titulo-numero">03.</span> <span data-i18n="proyectos.titulo">Proyectos</span></h2>
+
+                <!-- ===== SECCIÓN PROYECTOS: TARJETA DEL JUEGO DAETHERIAL (DESTACADO) ===== -->
+                <article class="proyecto-destacado">
+                    <div class="destacado-portada">
+                        <img src="img/daetherial/logo.png" alt="Logo del juego Daetherial" class="destacado-logo" width="256" height="256">
+                        <div class="destacado-portada-texto">
+                            <p class="etiqueta-destacado" data-i18n="daetherial.etiqueta">Proyecto destacado · Videojuego 2D</p>
+                            <h3 class="destacado-titulo">Daetherial</h3>
+                            <p class="destacado-descripcion" data-i18n="daetherial.descripcion">Juego de acción y aventura 2D con vista desde arriba, ambientado en un mundo de hielo. Lo desarrollamos en grupo en C++ con SFML para Programación II: unas 6.000 líneas organizadas en módulos.</p>
+                            <ul class="lista-chips">
+                                <li class="chip">C++</li><li class="chip">SFML 2</li><li class="chip">Visual Studio</li><li class="chip">Tiled</li><li class="chip">Git / GitHub</li>
+                            </ul>
+                            <p class="modalidad" data-i18n="daetherial.modalidad">Grupal · 4 integrantes</p>
+                        </div>
+                    </div>
+
+                    <div class="destacado-cuerpo">
+                        <div class="destacado-caracteristicas">
+                            <h4 data-i18n="daetherial.queTiene">Qué tiene</h4>
+                            <ul class="lista-caracteristicas">
+                                <li data-i18n="daetherial.c1">Máquina de estados para las pantallas: intro, menú, historia de 20 ilustraciones, juego, logros y créditos.</li>
+                                <li data-i18n="daetherial.c2">Un mago jugable con animaciones, vida, maná, oro y ataque de bola de fuego.</li>
+                                <li data-i18n="daetherial.c3">Jefe final, el Golem de hielo, que persigue al jugador con el algoritmo A* (búsqueda de caminos propia).</li>
+                                <li data-i18n="daetherial.c4">Tienda e inventario, mapa hecho con Tiled con colisiones leídas de CSV, cámara y niebla.</li>
+                                <li data-i18n="daetherial.c5">Logros guardados en un archivo binario y herencia entre entidades (EntidadViva → Personaje, Enemigo, Golem, Mascota).</li>
+                            </ul>
+                            <div class="botones-proyecto">
+                                <!-- PENDIENTE: cambiar por el link al repositorio de Daetherial cuando esté subido -->
+                                <a href="https://github.com/FedericoWachenschwan" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                            </div>
+                        </div>
+
+                        <!-- Video de gameplay: PENDIENTE (Federico lo graba). Mientras tanto se muestra la portada -->
+                        <div class="destacado-video" id="daetherial-video">
+                            <img src="img/daetherial/fondo-menu.jpg" alt="Menú principal de Daetherial" width="1600" height="872">
+                            <p class="destacado-video-aviso" data-i18n="daetherial.videoPronto">Video de gameplay: próximamente</p>
+                        </div>
+                    </div>
+
+                    <!-- Galería de imágenes del juego -->
+                    <ul class="galeria-destacado">
+                        <li><img src="img/daetherial/historia-01.jpg" alt="Escena 1 de la historia de Daetherial" loading="lazy" width="1000" height="562"></li>
+                        <li><img src="img/daetherial/historia-08.jpg" alt="Escena 8 de la historia de Daetherial" loading="lazy" width="1000" height="562"></li>
+                        <li><img src="img/daetherial/historia-15.jpg" alt="Escena 15 de la historia de Daetherial" loading="lazy" width="1000" height="562"></li>
+                        <li><img src="img/daetherial/mapa-del-nivel.jpg" alt="Mapa del nivel de Daetherial, hecho con Tiled" loading="lazy" width="900" height="900"></li>
+                        <li><img src="img/daetherial/golem.png" alt="Sprites del Golem de hielo, el jefe final" loading="lazy" width="456" height="588"></li>
+                        <li><img src="img/daetherial/tienda.png" alt="Tienda del juego" loading="lazy" width="487" height="512"></li>
+                    </ul>
+                </article>
+
+                <!-- ===== SECCIÓN PROYECTOS: GRILLA DE PROYECTOS DE LA FACULTAD ===== -->
+                <div class="grilla-proyectos">
+
+                    <!-- ===== TARJETA: TP WINFORMS (CATÁLOGO DE ARTÍCULOS) ===== -->
+                    <article class="tarjeta-proyecto">
+                        <button class="tarjeta-imagen" data-video="video/winforms.mp4" aria-label="Ver el video del catálogo de artículos">
+                            <img src="img/winforms/listado.jpg" alt="Pantalla principal del catálogo de artículos hecho en Windows Forms" loading="lazy" width="1280" height="720">
+                            <span class="icono-play" aria-hidden="true"></span>
+                        </button>
+                        <div class="tarjeta-cuerpo">
+                            <p class="modalidad" data-i18n="modalidad.grupal">Grupal</p>
+                            <h3 data-i18n="winforms.titulo">Catálogo de artículos</h3>
+                            <p data-i18n="winforms.descripcion">Aplicación de escritorio para administrar el catálogo de un comercio: alta, baja y modificación de artículos, búsqueda con filtros, galería de imágenes y gestión de marcas y categorías.</p>
+                            <ul class="lista-chips">
+                                <li class="chip">C#</li><li class="chip">Windows Forms</li><li class="chip">SQL Server</li><li class="chip">ADO.NET</li>
+                            </ul>
+                            <div class="botones-proyecto">
+                                <button class="boton boton-principal boton-chico" data-video="video/winforms.mp4" data-i18n="botones.video">Ver video</button>
+                                <!-- Repositorio del equipo (confirmar con Federico) -->
+                                <a href="https://github.com/Santiago-schmidt/tp-winform-equipo-b" class="boton boton-secundario boton-chico" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ===== TARJETA: ENFRENDADOS (JUEGO DE DADOS EN CONSOLA) ===== -->
+                    <article class="tarjeta-proyecto">
+                        <button class="tarjeta-imagen" data-video="video/enfrendados.mp4" aria-label="Ver el video de Enfrendados">
+                            <img src="img/enfrendados/turno.jpg" alt="Turno de Enfrendados con los dados dibujados en la consola" loading="lazy" width="1280" height="720">
+                            <span class="icono-play" aria-hidden="true"></span>
+                        </button>
+                        <div class="tarjeta-cuerpo">
+                            <p class="modalidad" data-i18n="modalidad.individual">Individual</p>
+                            <h3>Enfrendados</h3>
+                            <p data-i18n="enfrendados.descripcion">Juego de dados por turnos en consola: dos dados de 12 caras marcan el objetivo y hay que combinar dados que sumen exacto. Con penalizaciones, desempate e interfaz con recuadros y colores.</p>
+                            <ul class="lista-chips">
+                                <li class="chip">C++</li><li class="chip" data-i18n="chips.consola">Consola</li><li class="chip" data-i18n="chips.funciones">Funciones y vectores</li>
+                            </ul>
+                            <div class="botones-proyecto">
+                                <button class="boton boton-principal boton-chico" data-video="video/enfrendados.mp4" data-i18n="botones.video">Ver video</button>
+                                <!-- PENDIENTE: link al repositorio de Enfrendados -->
+                                <a href="https://github.com/FedericoWachenschwan" class="boton boton-secundario boton-chico" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ===== TARJETA: GENERALA (JUEGO DE DADOS EN CONSOLA) ===== -->
+                    <article class="tarjeta-proyecto">
+                        <button class="tarjeta-imagen" data-video="video/generala.mp4" aria-label="Ver el video de la Generala">
+                            <img src="img/generala/turno.jpg" alt="Turno de la Generala con los dados guardados y la planilla de puntos" loading="lazy" width="1280" height="720">
+                            <span class="icono-play" aria-hidden="true"></span>
+                        </button>
+                        <div class="tarjeta-cuerpo">
+                            <p class="modalidad" data-i18n="modalidad.individual">Individual</p>
+                            <h3>Generala</h3>
+                            <p data-i18n="generala.descripcion">El clásico juego de dados para 1 o 2 jugadores: 10 rondas, 3 tiradas por turno, dados que se guardan y planilla con las 10 jugadas, bonus por servida y récord de la sesión.</p>
+                            <ul class="lista-chips">
+                                <li class="chip">C++</li><li class="chip">Structs</li><li class="chip" data-i18n="chips.modulos">Módulos .h / .cpp</li>
+                            </ul>
+                            <div class="botones-proyecto">
+                                <button class="boton boton-principal boton-chico" data-video="video/generala.mp4" data-i18n="botones.video">Ver video</button>
+                                <!-- PENDIENTE: link al repositorio de la Generala -->
+                                <a href="https://github.com/FedericoWachenschwan" class="boton boton-secundario boton-chico" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ===== TARJETA: SISTEMA DE INMOBILIARIA (HERENCIA) ===== -->
+                    <article class="tarjeta-proyecto">
+                        <button class="tarjeta-imagen" data-video="video/codigo.mp4" data-inicio="3.8" aria-label="Ver el código del sistema de inmobiliaria">
+                            <img src="img/codigo/inmobiliaria.jpg" alt="Código C++ de la clase Casas_quintas que hereda de Casas" loading="lazy" width="1280" height="720">
+                            <span class="icono-play" aria-hidden="true"></span>
+                        </button>
+                        <div class="tarjeta-cuerpo">
+                            <p class="modalidad" data-i18n="modalidad.individual">Individual</p>
+                            <h3 data-i18n="inmobiliaria.titulo">Sistema de inmobiliaria</h3>
+                            <p data-i18n="inmobiliaria.descripcion">Programa de consola para registrar inmuebles en venta o alquiler: casas, casas quintas, departamentos, locales y terrenos, con herencia en dos niveles.</p>
+                            <ul class="lista-chips">
+                                <li class="chip">C++</li><li class="chip">POO</li><li class="chip" data-i18n="chips.herencia">Herencia</li>
+                            </ul>
+                            <div class="botones-proyecto">
+                                <button class="boton boton-principal boton-chico" data-video="video/codigo.mp4" data-inicio="3.8" data-i18n="botones.verCodigoVideo">Ver en el video</button>
+                                <!-- PENDIENTE: link al repositorio -->
+                                <a href="https://github.com/FedericoWachenschwan" class="boton boton-secundario boton-chico" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ===== TARJETA: EVALUACIÓN DE POSTULANTES (ENCAPSULAMIENTO) ===== -->
+                    <article class="tarjeta-proyecto">
+                        <button class="tarjeta-imagen" data-video="video/codigo.mp4" data-inicio="10.8" aria-label="Ver el código de la evaluación de postulantes">
+                            <img src="img/codigo/postulantes.jpg" alt="Código C++ del método esApto del gestor de postulantes" loading="lazy" width="1280" height="720">
+                            <span class="icono-play" aria-hidden="true"></span>
+                        </button>
+                        <div class="tarjeta-cuerpo">
+                            <p class="modalidad" data-i18n="modalidad.individual">Individual</p>
+                            <h3 data-i18n="postulantes.titulo">Evaluación de postulantes</h3>
+                            <p data-i18n="postulantes.descripcion">Sistema para que una empresa registre postulantes, evalúe si cumplen los requisitos mínimos y lleve la cuenta de evaluados y rechazados.</p>
+                            <ul class="lista-chips">
+                                <li class="chip">C++</li><li class="chip" data-i18n="chips.encapsulamiento">Encapsulamiento</li><li class="chip" data-i18n="chips.constructores">Constructores</li>
+                            </ul>
+                            <div class="botones-proyecto">
+                                <button class="boton boton-principal boton-chico" data-video="video/codigo.mp4" data-inicio="10.8" data-i18n="botones.verCodigoVideo">Ver en el video</button>
+                                <!-- PENDIENTE: link al repositorio -->
+                                <a href="https://github.com/FedericoWachenschwan" class="boton boton-secundario boton-chico" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ===== TARJETA: TORNEO RELÁMPAGO (MATRICES) ===== -->
+                    <article class="tarjeta-proyecto">
+                        <button class="tarjeta-imagen" data-video="video/codigo.mp4" data-inicio="24.8" aria-label="Ver el código del torneo relámpago">
+                            <img src="img/codigo/torneo.jpg" alt="Código C++ del torneo relámpago que usa una matriz de 4 por 4" loading="lazy" width="1280" height="720">
+                            <span class="icono-play" aria-hidden="true"></span>
+                        </button>
+                        <div class="tarjeta-cuerpo">
+                            <p class="modalidad" data-i18n="modalidad.individual">Individual</p>
+                            <h3 data-i18n="torneo.titulo">Torneo relámpago</h3>
+                            <p data-i18n="torneo.descripcion">Gestiona un torneo de 4 jugadores todos contra todos: carga de resultados, tabla de enfrentamientos y reinicio, validando que nadie juegue contra sí mismo.</p>
+                            <ul class="lista-chips">
+                                <li class="chip">C++</li><li class="chip" data-i18n="chips.matrices">Matrices</li><li class="chip" data-i18n="chips.validaciones">Validaciones</li>
+                            </ul>
+                            <div class="botones-proyecto">
+                                <button class="boton boton-principal boton-chico" data-video="video/codigo.mp4" data-inicio="24.8" data-i18n="botones.verCodigoVideo">Ver en el video</button>
+                                <!-- PENDIENTE: link al repositorio -->
+                                <a href="https://github.com/FedericoWachenschwan" class="boton boton-secundario boton-chico" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ===== SECCIÓN PROYECTOS: BLOQUE DE PRÁCTICA Y EJERCICIOS ===== -->
+                <aside class="bloque-practica">
+                    <div>
+                        <h3 data-i18n="practica.titulo">Práctica y ejercicios</h3>
+                        <p data-i18n="practica.texto">Además de estos proyectos, resolví las guías completas de Programación I (secuencial, condicionales, ciclos, funciones, vectores, matrices y structs) y ejercicios de Programación II y III: una clase Cadena con memoria dinámica, una clase Fecha con validaciones, composición de clases, un análisis de ventas mensuales hecho en grupo y modelos de objetos en C#.</p>
+                    </div>
+                    <div class="botones-proyecto">
+                        <button class="boton boton-principal" data-video="video/codigo.mp4" data-i18n="practica.video">Ver el recorrido por el código</button>
+                        <a href="https://github.com/FedericoWachenschwan" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="practica.github">Ver mi GitHub</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN REDES ===== -->
+        <section class="seccion seccion-redes" id="redes">
+            <div class="contenedor">
+                <h2 class="titulo-seccion"><span class="titulo-numero">04.</span> <span data-i18n="redes.titulo">Redes</span></h2>
+                <div class="grilla-redes">
+                    <!-- REDES: LINKEDIN -->
+                    <a class="tarjeta-red" href="https://www.linkedin.com/in/federicowachenschwan/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="icono-red"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4v-11Z" /></svg>
+                        <span class="red-nombre">LinkedIn</span>
+                        <span class="red-detalle">/in/federicowachenschwan</span>
+                    </a>
+                    <!-- REDES: GITHUB -->
+                    <a class="tarjeta-red" href="https://github.com/FedericoWachenschwan" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="icono-red"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" /></svg>
+                        <span class="red-nombre">GitHub</span>
+                        <span class="red-detalle">/FedericoWachenschwan</span>
+                    </a>
+                    <!-- REDES: MAIL -->
+                    <a class="tarjeta-red" href="mailto:fedew10@outlook.com.ar">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="icono-red icono-trazo"><path d="M3 6h18v12H3z" /><path d="m3 7 9 6 9-6" /></svg>
+                        <span class="red-nombre">Mail</span>
+                        <span class="red-detalle">fedew10@outlook.com.ar</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN CONTACTO: FORMULARIO ===== -->
+        <section class="seccion seccion-contacto" id="contacto">
+            <div class="contenedor contacto-contenido">
+                <div class="contacto-texto">
+                    <h2 class="titulo-seccion"><span class="titulo-numero">05.</span> <span data-i18n="contacto.titulo">Contacto</span></h2>
+                    <p data-i18n="contacto.texto">¿Tenés una propuesta o una consulta? Escribime y te respondo a la brevedad.</p>
+                </div>
+
+                <form class="formulario-contacto" id="formulario-contacto" novalidate>
+                    <div class="campo">
+                        <label for="campo-nombre" data-i18n="contacto.nombre">Nombre</label>
+                        <input type="text" id="campo-nombre" name="nombre" required autocomplete="name">
+                        <p class="mensaje-error" id="error-nombre" aria-live="polite"></p>
+                    </div>
+                    <div class="campo">
+                        <label for="campo-email" data-i18n="contacto.email">Email</label>
+                        <input type="email" id="campo-email" name="email" required autocomplete="email">
+                        <p class="mensaje-error" id="error-email" aria-live="polite"></p>
+                    </div>
+                    <div class="campo">
+                        <label for="campo-asunto"><span data-i18n="contacto.asunto">Asunto</span> <span class="opcional" data-i18n="contacto.opcional">(opcional)</span></label>
+                        <input type="text" id="campo-asunto" name="asunto">
+                    </div>
+                    <div class="campo">
+                        <label for="campo-mensaje" data-i18n="contacto.mensaje">Mensaje</label>
+                        <textarea id="campo-mensaje" name="mensaje" rows="5" required></textarea>
+                        <p class="mensaje-error" id="error-mensaje" aria-live="polite"></p>
+                    </div>
+                    <button type="submit" class="boton boton-principal" data-i18n="contacto.enviar">Enviar</button>
+                    <p class="mensaje-gracias" id="mensaje-gracias" aria-live="polite" hidden data-i18n="contacto.gracias">¡Gracias! Te respondo a la brevedad.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== PIE DE PÁGINA ===== -->
+    <footer class="pie">
+        <div class="contenedor pie-contenido">
+            <p>© <span id="anio-actual">2026</span> Federico Wachenschwan · <span data-i18n="pie.hecho">Hecho con HTML, CSS y JavaScript</span></p>
+            <p class="pie-links">
+                <a href="https://www.linkedin.com/in/federicowachenschwan/" target="_blank" rel="noopener">LinkedIn</a> ·
+                <a href="https://github.com/FedericoWachenschwan" target="_blank" rel="noopener">GitHub</a> ·
+                <a href="mailto:fedew10@outlook.com.ar">Mail</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== VENTANA PARA VER LOS VIDEOS DE LOS PROYECTOS ===== -->
+    <dialog class="ventana-video" id="ventana-video" aria-label="Video del proyecto">
+        <button class="ventana-video-cerrar" id="ventana-video-cerrar" aria-label="Cerrar el video">✕</button>
+        <video id="reproductor" controls playsinline preload="none"></video>
+    </dialog>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

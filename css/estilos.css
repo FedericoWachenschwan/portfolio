@@ -1,0 +1,1038 @@
+/* =========================================================
+   ESTILOS DEL PORTFOLIO DE FEDERICO WACHENSCHWAN
+   Ordenado por sección, igual que el index.html
+   ========================================================= */
+
+/* ===== VARIABLES: COLORES, TIPOGRAFÍAS Y MEDIDAS ===== */
+:root {
+    --color-fondo: #0B1520;
+    --color-fondo-tarjetas: #12212E;
+    --color-texto: #E6EEF3;
+    --color-texto-suave: #9FB4C2;
+    --color-acento: #5BAFC5;
+    --color-acento-oscuro: #3B85A3;
+    --color-borde: #1E3446;
+    --color-error: #F08A8A;
+
+    --fuente-texto: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --fuente-codigo: "JetBrains Mono", Consolas, monospace;
+
+    --ancho-maximo: 1120px;
+    --alto-menu: 68px;
+    --radio: 14px;
+    --sombra: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== ESTILOS GENERALES: RESETEO Y BASE ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Deja lugar para el menú fijo al saltar a una sección */
+    scroll-padding-top: var(--alto-menu);
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+img,
+video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--color-acento);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.2;
+    margin: 0 0 0.6em;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Foco visible con el teclado (accesibilidad) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
+}
+
+/* Caja centrada que limita el ancho del contenido */
+.contenedor {
+    width: 100%;
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== BOTONES (SE USAN EN TODAS LAS SECCIONES) ===== */
+.boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border: 2px solid var(--color-acento);
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.boton:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.boton-principal {
+    background-color: var(--color-acento);
+    color: var(--color-fondo);
+}
+
+.boton-principal:hover {
+    background-color: var(--color-acento-oscuro);
+    border-color: var(--color-acento-oscuro);
+    color: var(--color-texto);
+}
+
+.boton-secundario {
+    background-color: transparent;
+    color: var(--color-acento);
+}
+
+.boton-secundario:hover {
+    background-color: rgba(91, 175, 197, 0.12);
+}
+
+.boton-chico {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+}
+
+.boton svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ===== CHIPS (ETIQUETAS DE TECNOLOGÍAS) ===== */
+.lista-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    padding: 4px 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: 999px;
+    background-color: rgba(91, 175, 197, 0.08);
+    color: var(--color-texto);
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+/* ===== ENCABEZADO: MENÚ FIJO ===== */
+.encabezado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: var(--alto-menu);
+    background-color: rgba(11, 21, 32, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--ancho-maximo);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu-logo {
+    color: var(--color-texto);
+    font-family: var(--fuente-codigo);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.menu-logo:hover {
+    text-decoration: none;
+}
+
+.menu-logo-llave {
+    color: var(--color-acento);
+}
+
+.menu-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.menu-links a {
+    color: var(--color-texto-suave);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.menu-links a:hover {
+    color: var(--color-acento);
+    text-decoration: none;
+}
+
+/* Botón para cambiar entre español e inglés */
+.boton-idioma {
+    padding: 5px 12px;
+    border: 1px solid var(--color-acento);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-acento);
+    font-family: var(--fuente-codigo);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.boton-idioma:hover {
+    background-color: rgba(91, 175, 197, 0.12);
+}
+
+/* Botón hamburguesa: escondido en la computadora */
+.boton-hamburguesa {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.boton-hamburguesa span {
+    display: block;
+    height: 2px;
+    background-color: var(--color-texto);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+}
+
+/* Cuando el menú está abierto, las tres rayas forman una X */
+.boton-hamburguesa.abierto span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.boton-hamburguesa.abierto span:nth-child(2) {
+    opacity: 0;
+}
+
+.boton-hamburguesa.abierto span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== SECCIÓN INICIO (HERO) ===== */
+.seccion-inicio {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: calc(var(--alto-menu) + 40px) 0 60px;
+    background:
+        radial-gradient(circle at 80% 30%, rgba(91, 175, 197, 0.14), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(59, 133, 163, 0.12), transparent 40%);
+}
+
+.inicio-contenido {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+    gap: 48px;
+}
+
+.inicio-saludo {
+    margin-bottom: 0.4em;
+    color: var(--color-acento);
+    font-family: var(--fuente-codigo);
+    font-size: 1rem;
+}
+
+.inicio-nombre {
+    font-size: clamp(2.3rem, 6vw, 3.8rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.inicio-titulo {
+    color: var(--color-texto);
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    font-weight: 600;
+}
+
+.inicio-descripcion {
+    max-width: 560px;
+    color: var(--color-texto-suave);
+    font-size: 1.05rem;
+}
+
+.inicio-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+/* Foto de perfil circular con borde fino de color acento */
+.inicio-foto {
+    display: flex;
+    justify-content: center;
+}
+
+.inicio-foto img {
+    width: min(340px, 75vw);
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--color-acento);
+    box-shadow: 0 0 0 10px rgba(91, 175, 197, 0.08), var(--sombra);
+}
+
+/* ===== SECCIONES: ESPACIADO Y TÍTULOS ===== */
+.seccion {
+    padding: 90px 0;
+}
+
+/* Secciones alternadas con el fondo de las tarjetas */
+.seccion-sobre-mi,
+.seccion-redes {
+    background-color: var(--color-fondo-tarjetas);
+}
+
+.titulo-seccion {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 40px;
+    font-size: clamp(1.7rem, 4vw, 2.2rem);
+    font-weight: 700;
+}
+
+.titulo-numero {
+    color: var(--color-acento);
+    font-family: var(--fuente-codigo);
+    font-size: 0.7em;
+}
+
+/* ===== SECCIÓN SOBRE MÍ ===== */
+.sobre-mi-contenido {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.sobre-mi-texto {
+    color: var(--color-texto-suave);
+    font-size: 1.05rem;
+}
+
+.sobre-mi-datos {
+    display: grid;
+    gap: 12px;
+}
+
+.sobre-mi-datos li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background-color: var(--color-fondo);
+    font-size: 0.95rem;
+}
+
+.dato-icono {
+    font-size: 1.2rem;
+}
+
+/* ===== SECCIÓN CONOCIMIENTOS ===== */
+.grilla-conocimientos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tarjeta-conocimiento {
+    padding: 24px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background-color: var(--color-fondo-tarjetas);
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.tarjeta-conocimiento:hover {
+    border-color: var(--color-acento-oscuro);
+    transform: translateY(-3px);
+}
+
+.tarjeta-conocimiento h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05rem;
+}
+
+.conocimiento-icono {
+    display: inline-grid;
+    place-items: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 6px;
+    border-radius: 10px;
+    background-color: rgba(91, 175, 197, 0.12);
+    color: var(--color-acento);
+    font-family: var(--fuente-codigo);
+    font-size: 0.85rem;
+}
+
+/* ===== SECCIÓN PROYECTOS: TARJETA DESTACADA DE DAETHERIAL ===== */
+.proyecto-destacado {
+    overflow: hidden;
+    margin-bottom: 48px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background-color: var(--color-fondo-tarjetas);
+    box-shadow: var(--sombra);
+}
+
+/* Portada con la imagen del menú del juego y una capa oscura encima */
+.destacado-portada {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 48px 36px;
+    background:
+        linear-gradient(90deg, rgba(11, 21, 32, 0.94) 0%, rgba(11, 21, 32, 0.75) 55%, rgba(11, 21, 32, 0.45) 100%),
+        url("../img/daetherial/fondo-menu.jpg") center / cover;
+}
+
+.destacado-logo {
+    width: 140px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 18px rgba(91, 175, 197, 0.45));
+}
+
+.etiqueta-destacado {
+    margin-bottom: 0.3em;
+    color: var(--color-acento);
+    font-family: var(--fuente-codigo);
+    font-size: 0.85rem;
+}
+
+.destacado-titulo {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 800;
+}
+
+.destacado-descripcion {
+    max-width: 620px;
+    color: var(--color-texto);
+}
+
+.destacado-portada .lista-chips {
+    margin-bottom: 14px;
+}
+
+.modalidad {
+    display: inline-block;
+    margin: 0 0 8px;
+    color: var(--color-acento);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.destacado-cuerpo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 32px 36px;
+}
+
+.destacado-caracteristicas h4 {
+    font-size: 1.05rem;
+}
+
+.lista-caracteristicas {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.lista-caracteristicas li {
+    position: relative;
+    padding-left: 22px;
+    color: var(--color-texto-suave);
+    font-size: 0.95rem;
+}
+
+/* Viñeta con forma de rombo de hielo */
+.lista-caracteristicas li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-acento);
+    transform: rotate(45deg);
+}
+
+/* Espacio para el video de gameplay (por ahora muestra una imagen) */
+.destacado-video {
+    position: relative;
+    align-self: start;
+    overflow: hidden;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+}
+
+.destacado-video img,
+.destacado-video video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.destacado-video-aviso {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background-color: rgba(11, 21, 32, 0.85);
+    color: var(--color-texto);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Galería de imágenes del juego */
+.galeria-destacado {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    padding: 0 36px 36px;
+}
+
+.galeria-destacado img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    background-color: var(--color-fondo);
+    transition: transform 0.2s;
+}
+
+.galeria-destacado img:hover {
+    transform: scale(1.04);
+}
+
+/* Las imágenes con transparencia (sprites) se muestran enteras */
+.galeria-destacado img[src$=".png"] {
+    object-fit: contain;
+    padding: 8px;
+}
+
+/* ===== SECCIÓN PROYECTOS: GRILLA DE TARJETAS ===== */
+.grilla-proyectos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.tarjeta-proyecto {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background-color: var(--color-fondo-tarjetas);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta-proyecto:hover {
+    border-color: var(--color-acento-oscuro);
+    transform: translateY(-4px);
+    box-shadow: var(--sombra);
+}
+
+/* Imagen de la tarjeta: es un botón que abre el video */
+.tarjeta-imagen {
+    position: relative;
+    display: block;
+    padding: 0;
+    border: none;
+    background: var(--color-fondo);
+    cursor: pointer;
+}
+
+.tarjeta-imagen img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: opacity 0.2s;
+}
+
+.tarjeta-imagen:hover img {
+    opacity: 0.75;
+}
+
+/* Botón de "play" dibujado con CSS en el centro de la imagen */
+.icono-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: rgba(11, 21, 32, 0.8);
+    border: 2px solid var(--color-acento);
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.icono-play::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent var(--color-acento);
+    transform: translate(-50%, -50%);
+}
+
+.tarjeta-imagen:hover .icono-play {
+    background-color: var(--color-acento-oscuro);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.tarjeta-cuerpo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 22px;
+}
+
+.tarjeta-cuerpo h3 {
+    font-size: 1.2rem;
+}
+
+.tarjeta-cuerpo > p:not(.modalidad) {
+    color: var(--color-texto-suave);
+    font-size: 0.93rem;
+}
+
+.tarjeta-cuerpo .lista-chips {
+    margin-bottom: 18px;
+}
+
+.botones-proyecto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+}
+
+/* ===== SECCIÓN PROYECTOS: BLOQUE DE PRÁCTICA Y EJERCICIOS ===== */
+.bloque-practica {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    align-items: center;
+    gap: 28px;
+    margin-top: 48px;
+    padding: 30px 32px;
+    border: 1px dashed var(--color-acento-oscuro);
+    border-radius: var(--radio);
+    background-color: rgba(18, 33, 46, 0.6);
+}
+
+.bloque-practica h3 {
+    font-size: 1.2rem;
+}
+
+.bloque-practica p {
+    margin: 0;
+    color: var(--color-texto-suave);
+    font-size: 0.95rem;
+}
+
+.bloque-practica .botones-proyecto {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.bloque-practica .boton {
+    justify-content: center;
+}
+
+/* ===== SECCIÓN REDES ===== */
+.grilla-redes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tarjeta-red {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 30px 20px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.tarjeta-red:hover {
+    border-color: var(--color-acento);
+    transform: translateY(-4px);
+    text-decoration: none;
+}
+
+.icono-red {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 8px;
+    fill: var(--color-acento);
+}
+
+/* El ícono del mail está dibujado con líneas, no relleno */
+.icono-trazo {
+    fill: none;
+    stroke: var(--color-acento);
+    stroke-width: 1.8;
+    stroke-linejoin: round;
+}
+
+.red-nombre {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.red-detalle {
+    color: var(--color-texto-suave);
+    font-size: 0.88rem;
+    word-break: break-all;
+}
+
+/* ===== SECCIÓN CONTACTO: FORMULARIO ===== */
+.contacto-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.contacto-texto p {
+    color: var(--color-texto-suave);
+    font-size: 1.05rem;
+}
+
+.formulario-contacto {
+    padding: 30px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background-color: var(--color-fondo-tarjetas);
+}
+
+.campo {
+    margin-bottom: 16px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.opcional {
+    color: var(--color-texto-suave);
+    font-weight: 400;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    border-color: var(--color-acento);
+}
+
+/* Campo con error: borde rojo y mensaje debajo */
+.campo-con-error input,
+.campo-con-error textarea {
+    border-color: var(--color-error);
+}
+
+.mensaje-error {
+    min-height: 1.2em;
+    margin: 4px 0 0;
+    color: var(--color-error);
+    font-size: 0.85rem;
+}
+
+.mensaje-gracias {
+    margin: 16px 0 0;
+    padding: 12px 16px;
+    border-left: 3px solid var(--color-acento);
+    border-radius: 6px;
+    background-color: rgba(91, 175, 197, 0.12);
+    font-weight: 600;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+.pie {
+    padding: 28px 0;
+    border-top: 1px solid var(--color-borde);
+    color: var(--color-texto-suave);
+    font-size: 0.9rem;
+}
+
+.pie-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.pie p {
+    margin: 0;
+}
+
+/* ===== VENTANA DEL VIDEO ===== */
+.ventana-video {
+    width: min(1000px, 94vw);
+    padding: 0;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background-color: #000;
+    overflow: visible;
+}
+
+.ventana-video::backdrop {
+    background-color: rgba(5, 10, 16, 0.85);
+}
+
+.ventana-video video {
+    width: 100%;
+    border-radius: var(--radio);
+}
+
+.ventana-video-cerrar {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--color-acento);
+    border-radius: 50%;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.ventana-video-cerrar:hover {
+    background-color: var(--color-acento-oscuro);
+}
+
+/* ===== RESPONSIVE: TABLET ===== */
+@media (max-width: 960px) {
+    .grilla-conocimientos,
+    .grilla-proyectos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .destacado-cuerpo,
+    .bloque-practica,
+    .contacto-contenido,
+    .sobre-mi-contenido {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-destacado {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===== RESPONSIVE: CELULAR (MENÚ HAMBURGUESA) ===== */
+@media (max-width: 760px) {
+    .boton-hamburguesa {
+        display: flex;
+    }
+
+    /* El menú se despliega hacia abajo al tocar la hamburguesa */
+    .menu-links {
+        position: absolute;
+        top: var(--alto-menu);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 20px 20px;
+        background-color: var(--color-fondo);
+        border-bottom: 1px solid var(--color-borde);
+        display: none;
+    }
+
+    .menu-links.abierto {
+        display: flex;
+    }
+
+    .menu-links li {
+        width: 100%;
+    }
+
+    .menu-links a {
+        display: block;
+        padding: 12px 0;
+        font-size: 1.05rem;
+    }
+
+    .boton-idioma {
+        margin-top: 10px;
+    }
+
+    .inicio-contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    /* En el celular la foto va arriba del texto */
+    .inicio-foto {
+        order: -1;
+    }
+
+    .inicio-foto img {
+        width: min(220px, 60vw);
+    }
+
+    .inicio-descripcion {
+        margin: 0 auto 1em;
+    }
+
+    .inicio-botones {
+        justify-content: center;
+    }
+
+    .seccion {
+        padding: 64px 0;
+    }
+
+    .grilla-conocimientos,
+    .grilla-proyectos,
+    .grilla-redes {
+        grid-template-columns: 1fr;
+    }
+
+    .destacado-portada {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 22px;
+    }
+
+    .destacado-logo {
+        width: 96px;
+    }
+
+    .destacado-cuerpo {
+        padding: 24px 22px;
+    }
+
+    .galeria-destacado {
+        padding: 0 22px 24px;
+    }
+
+    .bloque-practica,
+    .formulario-contacto {
+        padding: 22px;
+    }
+}
+
+/* ===== ACCESIBILIDAD: SIN ANIMACIONES SI EL USUARIO LAS DESACTIVÓ ===== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
