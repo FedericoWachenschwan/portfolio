@@ -3,7 +3,7 @@
    1) Menú hamburguesa   2) Año del pie de página
    3) Validación del formulario   4) Cambio de idioma ES / EN
    5) Ventana para ver los videos de los proyectos
-   6) Menú: resaltar la sección actual
+   6) Menú: resaltar la sección actual   7) Aparición suave al hacer scroll
    ========================================================= */
 
 /* ===== 1) MENÚ HAMBURGUESA: ABRIR Y CERRAR EN EL CELULAR ===== */
@@ -45,6 +45,7 @@ const textosEnIngles = {
     "inicio.verProyectos": "See projects",
     "inicio.contactame": "Contact me",
     "inicio.cv": "Download CV",
+    "inicio.disponible": "Available for my first developer role",
 
     "sobre.titulo": "About me",
     "sobre.texto": "I'm a student of the University Technical Degree in Programming at UTN. During the degree I've worked with C++ (object-oriented programming, dynamic memory, files) and with C# and .NET (desktop applications with Windows Forms and SQL Server databases). Together with my team I built Daetherial, a 2D game in C++ with SFML. I'm interested in software development and video games, and I'm looking for my first professional experience as a developer.",
@@ -305,4 +306,32 @@ const observador = new IntersectionObserver(function (entradas) {
 
 for (const seccion of seccionesConLink) {
     observador.observe(seccion);
+}
+
+/* ===== 7) ANIMACIÓN: LOS BLOQUES APARECEN SUAVEMENTE AL HACER SCROLL ===== */
+// La clase se agrega desde acá: si el JavaScript no carga, todo se ve igual (sin animación)
+const bloquesQueAparecen = document.querySelectorAll(
+    ".titulo-seccion, .intro-seccion, .sobre-mi-texto, .sobre-mi-datos li, .tarjeta-conocimiento, " +
+    ".proyecto-destacado, .tarjeta-proyecto, .bloque-practica, .tarjeta-red, .contacto-texto, .formulario-contacto"
+);
+
+const observadorDeAparicion = new IntersectionObserver(function (entradas) {
+    for (const entrada of entradas) {
+        if (entrada.isIntersecting) {
+            entrada.target.classList.add("visible");
+            observadorDeAparicion.unobserve(entrada.target);
+        }
+    }
+}, { threshold: 0.12 });
+
+for (const bloque of bloquesQueAparecen) {
+    // Los elementos de una misma grilla aparecen uno detrás de otro
+    const posicion = Array.from(bloque.parentElement.children).indexOf(bloque);
+    bloque.style.transitionDelay = (posicion % 3) * 0.12 + "s";
+    bloque.classList.add("revelar");
+    // Cuando ya apareció, se saca la demora para que el efecto al pasar el mouse sea inmediato
+    bloque.addEventListener("transitionend", function () {
+        bloque.style.transitionDelay = "0s";
+    }, { once: true });
+    observadorDeAparicion.observe(bloque);
 }
