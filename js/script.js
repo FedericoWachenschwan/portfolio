@@ -120,8 +120,6 @@ const textosEnIngles = {
     "practica.intro": "Console programs in C++ and C#, with no graphical interface: guides, exercises and assignments from my degree, solved, compiled and executed.",
     "practica.n1": "programs",
     "practica.n2": "lines of code",
-    "practica.n3": "assignments solved",
-    "practica.n4": "courses",
     "practica.videoTitulo": "The full walkthrough",
     "practica.videoTexto": "A short sample: folders, assignments and more than 127 programs running · 5 min",
     "practica.destacados": "Featured exercises",
@@ -365,13 +363,14 @@ const contadores = document.querySelectorAll("[data-contar]");
 
 function animarContador(elemento) {
     const final = Number(elemento.dataset.contar);
+    const prefijo = elemento.dataset.prefijo || "";
     const duracion = 1600;
     const inicio = performance.now();
     function paso(ahora) {
         const avance = Math.min(1, (ahora - inicio) / duracion);
         // Arranca rápido y frena al final
         const suavizado = 1 - Math.pow(1 - avance, 3);
-        elemento.textContent = Math.round(final * suavizado).toLocaleString("es-AR");
+        elemento.textContent = prefijo + Math.round(final * suavizado).toLocaleString("es-AR");
         if (avance < 1) {
             requestAnimationFrame(paso);
         }

@@ -979,7 +979,7 @@ textarea:focus-visible {
 /* ===== SECCIÓN PRÁCTICA: CONTADORES ===== */
 .contadores-practica {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin-bottom: 48px;
     border-top: 1px solid var(--color-linea);
     border-bottom: 1px solid var(--color-linea);
@@ -1461,18 +1461,6 @@ textarea:focus-visible {
 
     .proyecto-vitrina:nth-of-type(even) .vitrina-medios {
         order: 0;
-    }
-
-    .contadores-practica {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contadores-practica li:nth-child(3) {
-        border-left: none;
-    }
-
-    .contadores-practica li:nth-child(n + 3) {
-        border-top: 1px solid var(--color-linea);
     }
 
     .destacado-cuerpo,
