@@ -3,6 +3,7 @@
    1) Menú hamburguesa   2) Año del pie de página
    3) Validación del formulario   4) Cambio de idioma ES / EN
    5) Ventana para ver los videos de los proyectos
+   6) Menú: resaltar la sección actual
    ========================================================= */
 
 /* ===== 1) MENÚ HAMBURGUESA: ABRIR Y CERRAR EN EL CELULAR ===== */
@@ -53,6 +54,9 @@ const textosEnIngles = {
     "sobre.dato4": "Looking for my first developer role",
 
     "conocimientos.titulo": "Skills",
+    "conocimientos.intro": "The technologies and concepts I've worked with during my degree and in my projects.",
+    "proyectos.intro": "Click any image to watch the project running on video.",
+    "redes.intro": "Where you can see my work and reach me.",
     "conocimientos.lenguajes": "Languages",
     "conocimientos.js": "JavaScript (basic)",
     "conocimientos.paradigmas": "Paradigms and concepts",
@@ -284,3 +288,21 @@ ventanaVideo.addEventListener("close", function () {
     reproductor.removeAttribute("src");
     reproductor.load();
 });
+
+/* ===== 6) MENÚ: MARCAR EN QUÉ SECCIÓN ESTÁ EL USUARIO ===== */
+// Cuando una sección ocupa el centro de la pantalla, su link del menú queda resaltado
+const seccionesConLink = document.querySelectorAll("main section[id]");
+
+const observador = new IntersectionObserver(function (entradas) {
+    for (const entrada of entradas) {
+        if (entrada.isIntersecting) {
+            for (const link of linksDelMenu) {
+                link.classList.toggle("activo", link.getAttribute("href") === "#" + entrada.target.id);
+            }
+        }
+    }
+}, { rootMargin: "-45% 0px -50% 0px" });
+
+for (const seccion of seccionesConLink) {
+    observador.observe(seccion);
+}
