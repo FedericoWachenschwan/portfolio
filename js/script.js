@@ -43,14 +43,14 @@ const textosEnIngles = {
 
     "inicio.saludo": "Hi, I'm",
     "inicio.titulo": "Junior developer in training · C++ · C# / .NET · SQL",
-    "inicio.descripcion": "I build software in C++ and C# / .NET, focused on writing clear, maintainable and well-structured code.",
+    "inicio.descripcion": "I build desktop applications, console programs and video games in C++ and C# / .NET.",
     "inicio.verProyectos": "See projects",
     "inicio.contactame": "Contact me",
     "inicio.cv": "Download CV",
     "inicio.disponible": "Available for trainee and junior positions",
 
     "sobre.titulo": "About me",
-    "sobre.texto": "Student of the University Technical Degree in Programming at UTN, trained in C++ —object-oriented programming, data structures, dynamic memory and file handling— and in C# / .NET, building Windows Forms desktop applications connected to SQL Server databases. I focus on writing clear, maintainable code and on working in teams with version control. I'm looking for my first professional role as a developer, in a team where I can contribute and keep growing.",
+    "sobre.texto": "Student of the University Technical Degree in Programming at UTN. I program in C++ and C# / .NET: from console applications and data structures to Windows Forms desktop apps with SQL Server, and 2D video games. I learn by doing: I turned every topic of my degree into code, with more than 300 programs of my own. I’m looking for my first role as a trainee or junior developer, in a team where I can contribute and keep growing.",
     "sobre.dato1": "Programming degree — UTN (2024 – present)",
     "sobre.dato2": "Buenos Aires, Argentina",
     "sobre.dato3": "English: advanced written · intermediate spoken",
