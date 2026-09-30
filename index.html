@@ -221,7 +221,7 @@
                             <ul class="lista-chips">
                                 <li class="chip">C++</li><li class="chip">SFML 2</li><li class="chip">Visual Studio</li><li class="chip">Tiled</li><li class="chip">Git / GitHub</li>
                             </ul>
-                            <p class="modalidad" data-i18n="daetherial.modalidad">Grupal · 4 integrantes</p>
+                            <p class="modalidad" data-i18n="daetherial.modalidad">Proyecto grupal</p>
                         </div>
                     </div>
 
@@ -236,15 +236,17 @@
                                 <li data-i18n="daetherial.c5">Persistencia de logros en archivos binarios y jerarquía de clases con herencia (EntidadViva → Personaje, Enemigo, Golem, Mascota).</li>
                             </ul>
                             <div class="botones-proyecto">
+                                <button class="boton boton-principal" data-video="video/daetherial.mp4" data-i18n="botones.video">Ver video</button>
                                 <a href="https://github.com/ripsady/Daetherial" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
                             </div>
                         </div>
 
-                        <!-- Video de gameplay: PENDIENTE (Federico lo graba). Mientras tanto se muestra la portada -->
-                        <div class="destacado-video" id="daetherial-video">
+                        <!-- Trailer con el gameplay del juego -->
+                        <button class="destacado-video" data-video="video/daetherial.mp4" aria-label="Ver el trailer de Daetherial">
                             <img src="img/daetherial/fondo-menu.jpg" alt="Menú principal de Daetherial" width="1600" height="872">
-                            <p class="destacado-video-aviso" data-i18n="daetherial.videoPronto">Video de gameplay: próximamente</p>
-                        </div>
+                            <span class="icono-play" aria-hidden="true"></span>
+                            <span class="destacado-video-aviso" data-i18n="daetherial.verTrailer">Ver el trailer · 1:40</span>
+                        </button>
                     </div>
 
                     <!-- Galería de imágenes del juego -->
@@ -261,6 +263,9 @@
                 <!-- ===== MIS PROYECTOS: VITRINA CON LOS OTROS TRES PROYECTOS (FILAS GRANDES QUE SE ALTERNAN) ===== -->
                 <div class="vitrina-proyectos">
 
+                    <!-- ===== VITRINA: GRUPO DE APLICACIONES DE ESCRITORIO (.NET) ===== -->
+                    <p class="grupo-proyectos" data-i18n="grupos.escritorio">Aplicación de escritorio · C# / .NET · Windows Forms</p>
+
                     <!-- ===== VITRINA: CATÁLOGO DE ARTÍCULOS (TP WINFORMS) ===== -->
                     <article class="proyecto-vitrina">
                         <div class="vitrina-medios">
@@ -275,7 +280,7 @@
                             </ul>
                         </div>
                         <div class="vitrina-texto">
-                            <p class="modalidad"><span data-i18n="modalidad.grupal">Grupal</span> · C# / .NET</p>
+                            <p class="modalidad"><span data-i18n="modalidad.grupal">Grupal</span> · C# · Windows Forms</p>
                             <h3 data-i18n="winforms.titulo">Catálogo de artículos</h3>
                             <p data-i18n="winforms.descripcion">Aplicación de escritorio para gestionar el catálogo de un comercio, conectada a una base de datos SQL Server.</p>
                             <h4 data-i18n="proyectos.contiene">Contiene</h4>
@@ -294,6 +299,9 @@
                         </div>
                     </article>
 
+                    <!-- ===== VITRINA: GRUPO DE APLICACIONES DE CONSOLA (C++) ===== -->
+                    <p class="grupo-proyectos" data-i18n="grupos.consola">Aplicaciones de consola · C++ · Sin interfaz gráfica</p>
+
                     <!-- ===== VITRINA: ENFRENDADOS (JUEGO DE DADOS EN CONSOLA) ===== -->
                     <article class="proyecto-vitrina">
                         <div class="vitrina-medios">
@@ -308,7 +316,7 @@
                             </ul>
                         </div>
                         <div class="vitrina-texto">
-                            <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++</p>
+                            <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++ · <span data-i18n="chips.consola">Consola</span></p>
                             <h3>Enfrendados</h3>
                             <p data-i18n="enfrendados.descripcion">Juego de dados por turnos para consola: dos dados de 12 caras definen un objetivo y cada jugador debe combinar dados que sumen exactamente ese valor.</p>
                             <h4 data-i18n="proyectos.contiene">Contiene</h4>
@@ -341,7 +349,7 @@
                             </ul>
                         </div>
                         <div class="vitrina-texto">
-                            <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++</p>
+                            <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++ · <span data-i18n="chips.consola">Consola</span></p>
                             <h3>Generala</h3>
                             <p data-i18n="generala.descripcion">Versión para consola del clásico juego de dados, para uno o dos jugadores, con planilla de puntaje completa.</p>
                             <h4 data-i18n="proyectos.contiene">Contiene</h4>
@@ -367,7 +375,7 @@
         <section class="seccion seccion-practica" id="practica">
             <div class="contenedor">
                 <h2 class="titulo-seccion"><span class="titulo-numero" aria-hidden="true">IV</span> <span data-i18n="practica.titulo">Práctica</span></h2>
-                <p class="intro-seccion" data-i18n="practica.intro">Cada guía, ejercicio y trabajo práctico de la carrera, resuelto, compilado y ejecutado.</p>
+                <p class="intro-seccion" data-i18n="practica.intro">Programas de consola en C++ y C#, sin interfaz gráfica: guías, ejercicios y trabajos prácticos de la carrera, resueltos, compilados y ejecutados.</p>
 
                 <!-- PRÁCTICA: CONTADORES (los números suben al aparecer en pantalla) -->
                 <ul class="contadores-practica">
@@ -383,7 +391,7 @@
                     <span class="icono-play" aria-hidden="true"></span>
                     <span class="practica-video-texto">
                         <span class="practica-video-titulo" data-i18n="practica.videoTitulo">El recorrido completo</span>
-                        <span data-i18n="practica.videoTexto">Carpetas, consignas y más de 150 programas en ejecución · 5 min</span>
+                        <span data-i18n="practica.videoTexto">Una breve muestra: carpetas, consignas y más de 127 programas en ejecución · 5 min</span>
                     </span>
                 </button>
 
@@ -411,7 +419,7 @@
                         <span class="ejercicio-texto" data-i18n="cadena.descripcion">Clase de texto propia que gestiona su memoria con new y delete.</span>
                     </a>
                     <a class="tarjeta-ejercicio" href="https://github.com/FedericoWachenschwan/programacion-utn/tree/main/04_Programacion_III_CSharp/1.%20ACTIVIDADES%20POO" target="_blank" rel="noopener">
-                        <span class="ejercicio-lenguaje">C# · POO</span>
+                        <span class="ejercicio-lenguaje">C# · .NET · <span data-i18n="chips.consola">Consola</span></span>
                         <span class="ejercicio-titulo" data-i18n="csharp.titulo">Modelos de objetos en C#</span>
                         <span class="ejercicio-texto" data-i18n="csharp.descripcion">Portón automático, cuenta bancaria y cafetera, con propiedades y validaciones.</span>
                     </a>
