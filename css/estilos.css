@@ -492,7 +492,8 @@ textarea:focus-visible {
 
 /* Secciones alternadas con un negro apenas más claro */
 .seccion-sobre-mi,
-.seccion-redes {
+.seccion-practica,
+.seccion-contacto {
     background-color: var(--color-fondo-alterno);
 }
 
@@ -794,69 +795,123 @@ textarea:focus-visible {
     padding: 8px;
 }
 
-/* ===== SECCIÓN PROYECTOS: GRILLA DE TARJETAS ===== */
-.grilla-proyectos {
+/* ===== SECCIÓN MIS PROYECTOS: VITRINA (FILAS GRANDES QUE SE ALTERNAN) ===== */
+.vitrina-proyectos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    gap: 96px;
 }
 
-.tarjeta-proyecto {
+.proyecto-vitrina {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    align-items: center;
+    gap: 56px;
+}
+
+/* En las filas pares, la imagen pasa a la derecha */
+.proyecto-vitrina:nth-child(even) .vitrina-medios {
+    order: 2;
+}
+
+.vitrina-medios {
+    display: grid;
+    gap: 12px;
+}
+
+/* Imagen grande: es un botón que abre el video */
+.vitrina-imagen {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: block;
     overflow: hidden;
+    padding: 0;
     border: 1px solid var(--color-linea);
-    border-radius: var(--radio);
-    background-color: var(--color-fondo-tarjetas);
-    transition: border-color var(--transicion), transform var(--transicion);
+    background: var(--color-fondo);
+    box-shadow: var(--sombra);
+    cursor: pointer;
 }
 
-/* Línea roja arriba de la tarjeta que se "dibuja" al pasar el mouse */
-.tarjeta-proyecto::before {
+.vitrina-imagen img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    filter: grayscale(0.3) brightness(0.88);
+    transition: filter var(--transicion), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.vitrina-imagen:hover img {
+    filter: none;
+    transform: scale(1.03);
+}
+
+/* Línea roja que recorre el borde inferior al pasar el mouse */
+.vitrina-imagen::after {
     content: "";
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    bottom: 0;
     height: 2px;
     background-color: var(--color-acento);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.45s ease;
+    transition: transform 0.5s ease;
 }
 
-.tarjeta-proyecto:hover {
-    border-color: var(--color-linea-fuerte);
-    transform: translateY(-4px);
-}
-
-.tarjeta-proyecto:hover::before {
+.vitrina-imagen:hover::after {
     transform: scaleX(1);
 }
 
-/* Imagen de la tarjeta: es un botón que abre el video */
-.tarjeta-imagen {
-    position: relative;
-    display: block;
-    padding: 0;
-    border: none;
-    border-bottom: 1px solid var(--color-linea);
-    background: var(--color-fondo);
-    cursor: pointer;
+.vitrina-miniaturas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
-.tarjeta-imagen img {
+.vitrina-miniaturas img {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    filter: grayscale(0.35) brightness(0.85);
+    border: 1px solid var(--color-linea);
+    filter: grayscale(0.5) brightness(0.8);
     transition: filter var(--transicion);
 }
 
-.tarjeta-imagen:hover img {
+.vitrina-miniaturas img:hover {
     filter: none;
+}
+
+.vitrina-texto h3 {
+    margin-bottom: 14px;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+}
+
+.vitrina-texto > p:not(.modalidad) {
+    color: var(--color-texto-suave);
+    font-size: 1rem;
+}
+
+.vitrina-texto h4 {
+    margin: 22px 0 12px;
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.vitrina-texto .lista-caracteristicas {
+    margin-bottom: 22px;
+}
+
+.vitrina-texto .lista-chips {
+    margin-bottom: 28px;
+}
+
+.botones-proyecto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 /* Botón de "play" dibujado con CSS en el centro de la imagen */
@@ -864,9 +919,9 @@ textarea:focus-visible {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 58px;
-    height: 58px;
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    width: 72px;
+    height: 72px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
     border-radius: 50%;
     background-color: rgba(10, 10, 11, 0.55);
     transform: translate(-50%, -50%);
@@ -879,70 +934,178 @@ textarea:focus-visible {
     top: 50%;
     left: 54%;
     border-style: solid;
-    border-width: 9px 0 9px 14px;
+    border-width: 11px 0 11px 17px;
     border-color: transparent transparent transparent #fff;
     transform: translate(-50%, -50%);
 }
 
-.tarjeta-imagen:hover .icono-play {
+.vitrina-imagen:hover .icono-play,
+.practica-video:hover .icono-play {
     background-color: var(--color-acento-fuerte);
     border-color: var(--color-acento-fuerte);
     transform: translate(-50%, -50%) scale(1.08);
 }
 
-.tarjeta-cuerpo {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 26px 26px 28px;
-}
-
-.tarjeta-cuerpo h3 {
-    font-size: 1.7rem;
-}
-
-.tarjeta-cuerpo > p:not(.modalidad) {
-    color: var(--color-texto-suave);
-    font-size: 0.92rem;
-}
-
-.tarjeta-cuerpo .lista-chips {
-    margin-bottom: 24px;
-}
-
-.botones-proyecto {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: auto;
-}
-
-/* ===== SECCIÓN PROYECTOS: BLOQUE DE PRÁCTICA Y EJERCICIOS ===== */
-.bloque-practica {
+/* ===== SECCIÓN PRÁCTICA: CONTADORES ===== */
+.contadores-practica {
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    align-items: center;
-    gap: 36px;
-    margin-top: 64px;
-    padding: 40px 44px;
-    border: 1px solid var(--color-linea);
-    border-left: 2px solid var(--color-acento);
-    background-color: var(--color-fondo-alterno);
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 48px;
+    border-top: 1px solid var(--color-linea);
+    border-bottom: 1px solid var(--color-linea);
 }
 
-.bloque-practica h3 {
-    font-size: 1.7rem;
-}
-
-.bloque-practica p {
-    margin: 0;
-    color: var(--color-texto-suave);
-    font-size: 0.95rem;
-}
-
-.bloque-practica .botones-proyecto {
+.contadores-practica li {
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    padding: 30px 12px;
+    text-align: center;
+}
+
+.contadores-practica li + li {
+    border-left: 1px solid var(--color-linea);
+}
+
+.contador-numero {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    font-weight: 600;
+    line-height: 1;
+    font-variant-numeric: lining-nums;
+}
+
+.contadores-practica li:first-child .contador-numero {
+    color: var(--color-acento);
+}
+
+.contador-texto {
+    margin-top: 10px;
+    color: var(--color-texto-suave);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+/* ===== SECCIÓN PRÁCTICA: VIDEO CON EL RECORRIDO COMPLETO ===== */
+.practica-video {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 72px;
+    padding: 0;
+    border: 1px solid var(--color-linea);
+    background: var(--color-fondo);
+    box-shadow: var(--sombra);
+    cursor: pointer;
+}
+
+.practica-video img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: filter var(--transicion);
+}
+
+.practica-video:hover img {
+    filter: brightness(0.85);
+}
+
+.practica-video-texto {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 60px 32px 26px;
+    background: linear-gradient(to top, rgba(10, 10, 11, 0.95), transparent);
+    color: var(--color-texto-suave);
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.practica-video-titulo {
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+}
+
+/* ===== SECCIÓN PRÁCTICA: EJERCICIOS DESTACADOS ===== */
+.subtitulo-practica {
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+}
+
+.grilla-ejercicios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background-color: var(--color-linea);
+    border: 1px solid var(--color-linea);
+}
+
+.tarjeta-ejercicio {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 28px 28px 30px;
+    background-color: var(--color-fondo-alterno);
+    color: var(--color-texto);
+    transition: background-color var(--transicion);
+}
+
+/* Flecha que aparece al pasar el mouse, indicando que abre GitHub */
+.tarjeta-ejercicio::after {
+    content: "↗";
+    position: absolute;
+    top: 24px;
+    right: 26px;
+    color: var(--color-acento);
+    opacity: 0;
+    transform: translate(-6px, 6px);
+    transition: opacity var(--transicion), transform var(--transicion);
+}
+
+.tarjeta-ejercicio:hover {
+    background-color: var(--color-fondo-tarjetas);
+}
+
+.tarjeta-ejercicio:hover::after {
+    opacity: 1;
+    transform: none;
+}
+
+.ejercicio-lenguaje {
+    color: var(--color-acento);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.ejercicio-titulo {
+    font-family: var(--fuente-titulos);
+    font-size: 1.55rem;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.ejercicio-texto {
+    color: var(--color-texto-suave);
+    font-size: 0.9rem;
+}
+
+.practica-accion {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
 }
 
 /* ===== SECCIÓN REDES ===== */
@@ -1254,20 +1417,35 @@ textarea:focus-visible {
     transform: none;
 }
 
-/* Las tarjetas de proyecto mantienen su propia animación al pasar el mouse */
-.tarjeta-proyecto.revelar.visible:hover {
-    transform: translateY(-4px);
-}
-
 /* ===== RESPONSIVE: TABLET ===== */
 @media (max-width: 960px) {
     .grilla-conocimientos,
-    .grilla-proyectos {
+    .grilla-ejercicios {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .proyecto-vitrina {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .proyecto-vitrina:nth-child(even) .vitrina-medios {
+        order: 0;
+    }
+
+    .contadores-practica {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contadores-practica li:nth-child(3) {
+        border-left: none;
+    }
+
+    .contadores-practica li:nth-child(n + 3) {
+        border-top: 1px solid var(--color-linea);
+    }
+
     .destacado-cuerpo,
-    .bloque-practica,
     .contacto-contenido,
     .sobre-mi-contenido {
         grid-template-columns: 1fr;
@@ -1366,7 +1544,7 @@ textarea:focus-visible {
     }
 
     .grilla-conocimientos,
-    .grilla-proyectos,
+    .grilla-ejercicios,
     .grilla-redes {
         grid-template-columns: 1fr;
     }
@@ -1389,8 +1567,16 @@ textarea:focus-visible {
         padding: 0 24px 28px;
     }
 
-    .bloque-practica {
-        padding: 28px 24px;
+    .vitrina-proyectos {
+        gap: 64px;
+    }
+
+    /* En el celular el texto del video va debajo de la imagen, no encima */
+    .practica-video-texto {
+        position: static;
+        padding: 16px 18px 18px;
+        background: var(--color-fondo-tarjetas);
+        font-size: 0.8rem;
     }
 
     .formulario-contacto {
