@@ -497,6 +497,28 @@ textarea:focus-visible {
     background-color: var(--color-fondo-alterno);
 }
 
+/* Práctica: ilustración de fondo con código real de los ejercicios, que se funde hacia abajo */
+.seccion-practica {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.seccion-practica::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 780px;
+    background:
+        linear-gradient(90deg, var(--color-fondo-alterno) 12%, rgba(16, 16, 18, 0.82) 42%, rgba(16, 16, 18, 0.15) 78%),
+        url("../img/practica/fondo.jpg") right top / auto 100% no-repeat;
+    -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 50%, transparent 100%);
+}
+
 /* Título con número romano en rojo, como las reglas de un cuaderno */
 .titulo-seccion {
     display: flex;
@@ -1029,6 +1051,8 @@ textarea:focus-visible {
 
 /* ===== SECCIÓN PRÁCTICA: CONTADORES ===== */
 .contadores-practica {
+    background-color: rgba(10, 10, 11, 0.55);
+    backdrop-filter: blur(2px);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-bottom: 48px;
@@ -1678,6 +1702,12 @@ textarea:focus-visible {
 
     .contadores-practica {
         grid-template-columns: 1fr;
+    }
+
+    .seccion-practica::before {
+        height: 520px;
+        background: url("../img/practica/fondo.jpg") 72% top / auto 100% no-repeat;
+        opacity: 0.35;
     }
 
     .contadores-practica li + li {
