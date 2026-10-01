@@ -146,6 +146,10 @@ const textosEnIngles = {
 
     "redes.titulo": "Links",
     "redes.intro": "Professional profiles and contact details.",
+    "redes.verPerfil": "View profile",
+    "redes.verRepos": "View repositories",
+    "redes.escribime": "Email me",
+    "practica.verGithub": "View on GitHub",
 
     "contacto.titulo": "Contact",
     "contacto.texto": "For job offers or questions, fill in the form or email me. I'll get back to you shortly.",
@@ -372,10 +376,20 @@ for (const seccion of seccionesConLink) {
     observador.observe(seccion);
 }
 
+/* ===== LUZ QUE SIGUE AL MOUSE EN LAS TARJETAS ===== */
+// Guarda la posición del mouse dentro de la tarjeta; el CSS dibuja un brillo suave en ese punto
+for (const tarjeta of document.querySelectorAll(".con-luz")) {
+    tarjeta.addEventListener("pointermove", function (evento) {
+        const caja = tarjeta.getBoundingClientRect();
+        tarjeta.style.setProperty("--luz-x", (evento.clientX - caja.left) + "px");
+        tarjeta.style.setProperty("--luz-y", (evento.clientY - caja.top) + "px");
+    });
+}
+
 /* ===== 7) ANIMACIÓN: LOS BLOQUES APARECEN SUAVEMENTE AL HACER SCROLL ===== */
 // La clase se agrega desde acá: si el JavaScript no carga, todo se ve igual (sin animación)
 const bloquesQueAparecen = document.querySelectorAll(
-    ".titulo-seccion, .intro-seccion, .sobre-mi-texto, .sobre-mi-datos li, .tarjeta-conocimiento, " +
+    ".titulo-seccion, .intro-seccion, .cinta-tecnologias, .sobre-mi-texto, .sobre-mi-datos li, .tarjeta-conocimiento, " +
     ".proyecto-destacado, .proyecto-vitrina, .contadores-practica, .practica-video, .tarjeta-ejercicio, .tarjeta-red, .contacto-texto, .formulario-contacto"
 );
 
