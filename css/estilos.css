@@ -808,14 +808,59 @@ textarea:focus-visible {
 /* ===== SECCIÓN MIS PROYECTOS: VITRINA (FILAS GRANDES QUE SE ALTERNAN) ===== */
 .vitrina-proyectos {
     display: grid;
-    gap: 96px;
+    gap: 40px;
 }
 
 .proyecto-vitrina {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1.25fr 1fr;
     align-items: center;
     gap: 56px;
+    padding: 48px;
+    border: 1px solid var(--color-linea);
+    border-top: 2px solid var(--color-proyecto, var(--color-acento));
+}
+
+/* Fondo de cada proyecto: una imagen propia, desenfocada y oscurecida para que el texto se lea */
+.proyecto-vitrina::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-position: center;
+    background-size: cover;
+    filter: blur(3px) saturate(1.2);
+    transform: scale(1.06);
+}
+
+/* Capa oscura con un tono del color del proyecto */
+.proyecto-vitrina::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(90deg, rgba(10, 10, 11, 0.95) 0%, rgba(10, 10, 11, 0.84) 50%, rgba(10, 10, 11, 0.95) 100%),
+        linear-gradient(0deg, color-mix(in srgb, var(--color-proyecto, transparent) 22%, transparent), transparent 70%);
+}
+
+/* Imagen y color de cada proyecto */
+.vitrina-winforms { --color-proyecto: #3B78FF; }
+.vitrina-winforms::before { background-image: url("../img/winforms/detalle.jpg"); }
+.vitrina-nsfy { --color-proyecto: #E8B04B; }
+.vitrina-nsfy::before { background-image: url("../img/nsfy/portada.jpg"); }
+.vitrina-enfrendados { --color-proyecto: #E74856; }
+.vitrina-enfrendados::before { background-image: url("../img/enfrendados/menu.jpg"); }
+.vitrina-generala { --color-proyecto: #16C60C; }
+.vitrina-generala::before { background-image: url("../img/generala/planilla.jpg"); }
+
+/* El color del proyecto también marca la etiqueta de arriba y las viñetas */
+.proyecto-vitrina .modalidad,
+.proyecto-vitrina .lista-caracteristicas li::before {
+    color: var(--color-proyecto, var(--color-acento));
 }
 
 /* Etiqueta que separa los grupos: escritorio (.NET) y consola (C++) */
@@ -823,7 +868,7 @@ textarea:focus-visible {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 0 0 -48px;
+    margin: 24px 0 -16px;
     color: var(--color-acento);
     font-size: 0.74rem;
     font-weight: 600;
@@ -1600,7 +1645,11 @@ textarea:focus-visible {
     }
 
     .vitrina-proyectos {
-        gap: 64px;
+        gap: 32px;
+    }
+
+    .proyecto-vitrina {
+        padding: 24px 20px;
     }
 
     .contadores-practica {
