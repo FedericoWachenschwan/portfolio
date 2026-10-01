@@ -42,28 +42,28 @@ const textosEnIngles = {
     "menu.contacto": "Contact",
 
     "inicio.saludo": "Hi, I'm",
-    "inicio.titulo": "Junior developer in training · C++ · C# / .NET · SQL",
+    "inicio.titulo": "Developer in training · C++ · C# / .NET · SQL",
     "inicio.descripcion": "I build desktop applications, console programs and video games in C++ and C# / .NET.",
     "inicio.verProyectos": "See projects",
     "inicio.contactame": "Contact me",
     "inicio.cv": "Download CV",
-    "inicio.disponible": "Available for trainee and junior positions",
+    "inicio.disponible": "Available for my first role as a developer",
 
     "sobre.titulo": "About me",
-    "sobre.texto": "Student of the University Technical Degree in Programming at UTN. I program in C++ and C# / .NET: from console applications and data structures to Windows Forms desktop apps with SQL Server, and 2D video games. I learn by doing: I turned every topic of my degree into code, with more than 300 programs of my own. I’m looking for my first role as a trainee or junior developer, in a team where I can contribute and keep growing.",
+    "sobre.texto": "Student of the University Technical Degree in Programming at UTN. I program in C++ and C# / .NET: from console applications and data structures to Windows Forms desktop apps with SQL Server, and 2D video games. I learn by doing: I turned every topic of my degree into code, with more than 300 programs of my own. I’m looking for my first role as a developer, in a team where I can contribute and keep growing.",
     "sobre.dato1": "Programming degree — UTN (2024 – present)",
     "sobre.dato2": "Buenos Aires, Argentina",
     "sobre.dato3": "English: advanced written · intermediate spoken",
-    "sobre.dato4": "Available for trainee and junior positions",
+    "sobre.dato4": "Available for my first role as a developer",
 
     "conocimientos.titulo": "Skills",
     "conocimientos.intro": "Technologies, tools and concepts applied in academic and personal projects.",
     "conocimientos.lenguajes": "Languages",
-    "conocimientos.js": "JavaScript (basic)",
+    "conocimientos.js": "JavaScript",
     "conocimientos.paradigmas": "Paradigms and concepts",
     "conocimientos.poo": "Object-oriented programming",
     "conocimientos.memoria": "Dynamic memory",
-    "conocimientos.estructuras": "Data structures and algorithms (A*)",
+    "conocimientos.estructuras": "Data structures and algorithms",
     "conocimientos.archivos": "Text and binary files",
     "conocimientos.patrones": "Patterns: state machine, layers",
     "conocimientos.frameworks": "Frameworks and libraries",
@@ -73,6 +73,7 @@ const textosEnIngles = {
     "conocimientos.metodologias": "Methodologies",
     "conocimientos.equipo": "Teamwork with version control",
     "conocimientos.jira": "Jira (task tracking)",
+    "conocimientos.scrum": "Agile methodologies: Scrum",
 
     "proyectos.titulo": "My projects",
     "proyectos.intro": "A selection of my most complete work. Each one includes a video demo and its source code.",
@@ -150,6 +151,7 @@ const textosEnIngles = {
     "contacto.mensaje": "Message",
     "contacto.enviar": "Send",
     "contacto.gracias": "Thanks! I'll get back to you shortly.",
+    "contacto.errorEnvio": "The message could not be sent. Email me directly at",
 
     "pie.hecho": "Made with HTML, CSS and JavaScript"
 };
@@ -251,19 +253,53 @@ function validarFormulario() {
     return todoBien;
 }
 
-formulario.addEventListener("submit", function (evento) {
-    // El formulario no tiene servidor: se valida y se muestra el agradecimiento
+// El sitio no tiene servidor propio: el mensaje se envía por mail con el servicio gratuito FormSubmit
+const direccionDeEnvio = "https://formsubmit.co/ajax/fedew10@outlook.com.ar";
+const botonEnviar = formulario.querySelector("button[type='submit']");
+const mensajeErrorEnvio = document.getElementById("mensaje-error-envio");
+
+formulario.addEventListener("submit", async function (evento) {
     evento.preventDefault();
     formularioYaEnviado = true;
     mensajeGracias.hidden = true;
+    mensajeErrorEnvio.hidden = true;
 
-    if (validarFormulario()) {
+    if (!validarFormulario()) {
+        // Lleva el foco al primer campo con error
+        formulario.querySelector("[aria-invalid='true']").focus();
+        return;
+    }
+
+    // Mientras se envía, el botón queda deshabilitado
+    const textoOriginal = botonEnviar.textContent;
+    botonEnviar.disabled = true;
+    botonEnviar.textContent = idiomaActual === "es" ? "Enviando..." : "Sending...";
+
+    try {
+        const respuesta = await fetch(direccionDeEnvio, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({
+                nombre: campoNombre.value.trim(),
+                email: campoEmail.value.trim(),
+                _subject: document.getElementById("campo-asunto").value.trim() || "Nuevo mensaje desde el portfolio",
+                mensaje: campoMensaje.value.trim(),
+                _template: "table",
+                _captcha: "false"
+            })
+        });
+        if (!respuesta.ok) {
+            throw new Error("Respuesta " + respuesta.status);
+        }
         mensajeGracias.hidden = false;
         formulario.reset();
         formularioYaEnviado = false;
-    } else {
-        // Lleva el foco al primer campo con error
-        formulario.querySelector("[aria-invalid='true']").focus();
+    } catch (error) {
+        // Si el servicio no responde, se ofrece escribir directo al mail
+        mensajeErrorEnvio.hidden = false;
+    } finally {
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = textoOriginal;
     }
 });
 

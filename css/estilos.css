@@ -1302,6 +1302,20 @@ textarea:focus-visible {
     font-style: italic;
 }
 
+/* Aviso si el mensaje no se pudo enviar */
+.mensaje-error-envio {
+    margin: 16px 0 0;
+    padding: 12px 16px;
+    border-left: 2px solid var(--color-error);
+    background-color: rgba(255, 107, 107, 0.1);
+    font-size: 0.95rem;
+}
+
+.boton:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
 /* ===== PIE DE PÁGINA ===== */
 .pie {
     padding: 36px 0;
