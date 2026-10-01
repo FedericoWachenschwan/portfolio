@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/estilos.css?v=2026100101">
+    <link rel="stylesheet" href="css/estilos.css?v=2026100102">
 </head>
 <body>
 
@@ -270,33 +270,39 @@
 
                     <!-- ===== VITRINA: CATÁLOGO DE ARTÍCULOS (TP WINFORMS) ===== -->
                     <article class="proyecto-vitrina vitrina-winforms">
-                        <div class="vitrina-medios">
-                            <button class="vitrina-imagen" data-video="video/winforms.mp4" aria-label="Ver el video del catálogo de artículos">
-                                <img src="img/winforms/listado.jpg" alt="Pantalla principal del catálogo de artículos hecho en Windows Forms" loading="lazy" width="1280" height="720">
-                                <span class="icono-play" aria-hidden="true"></span>
-                            </button>
-                            <ul class="vitrina-miniaturas">
-                                <li><img src="img/winforms/busqueda.jpg" alt="Búsqueda de artículos con filtros" loading="lazy" width="1280" height="720"></li>
-                                <li><img src="img/winforms/detalle.jpg" alt="Detalle de un artículo con su galería de imágenes" loading="lazy" width="1280" height="720"></li>
-                                <li><img src="img/winforms/eliminar.jpg" alt="Confirmación antes de eliminar un artículo" loading="lazy" width="1280" height="720"></li>
-                            </ul>
+                        <div class="vitrina-portada">
+                            <div class="vitrina-portada-texto">
+                                <p class="modalidad"><span data-i18n="modalidad.grupal">Grupal</span> · C# · Windows Forms</p>
+                                <h3 data-i18n="winforms.titulo">Catálogo de artículos</h3>
+                                <p class="vitrina-descripcion" data-i18n="winforms.descripcion">Aplicación de escritorio para gestionar el catálogo de un comercio, conectada a una base de datos SQL Server.</p>
+                                <ul class="lista-chips">
+                                    <li class="chip">C#</li><li class="chip">Windows Forms</li><li class="chip">SQL Server</li><li class="chip">ADO.NET</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="vitrina-texto">
-                            <p class="modalidad"><span data-i18n="modalidad.grupal">Grupal</span> · C# · Windows Forms</p>
-                            <h3 data-i18n="winforms.titulo">Catálogo de artículos</h3>
-                            <p data-i18n="winforms.descripcion">Aplicación de escritorio para gestionar el catálogo de un comercio, conectada a una base de datos SQL Server.</p>
-                            <h4 data-i18n="proyectos.contiene">Contiene</h4>
-                            <ul class="lista-caracteristicas">
-                                <li data-i18n="winforms.c1">Alta, baja y modificación de artículos con validación de datos.</li>
-                                <li data-i18n="winforms.c2">Búsqueda con filtros combinados y galería de imágenes por artículo.</li>
-                                <li data-i18n="winforms.c3">Administración de marcas y categorías, con arquitectura en capas.</li>
-                            </ul>
-                            <ul class="lista-chips">
-                                <li class="chip">C#</li><li class="chip">Windows Forms</li><li class="chip">SQL Server</li><li class="chip">ADO.NET</li>
-                            </ul>
-                            <div class="botones-proyecto">
-                                <button class="boton boton-principal" data-video="video/winforms.mp4" data-i18n="botones.video">Ver video</button>
-                                <a href="https://github.com/Santiago-schmidt/tp-winform-equipo-b" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                        <div class="vitrina-cuerpo">
+                            <div class="vitrina-medios">
+                                <button class="vitrina-imagen" data-video="video/winforms.mp4" aria-label="Ver el video del catálogo de artículos">
+                                    <img src="img/winforms/listado.jpg" alt="Pantalla principal del catálogo de artículos hecho en Windows Forms" loading="lazy" width="1280" height="720">
+                                    <span class="icono-play" aria-hidden="true"></span>
+                                </button>
+                                <ul class="vitrina-miniaturas">
+                                    <li><img src="img/winforms/busqueda.jpg" alt="Búsqueda de artículos con filtros" loading="lazy" width="1280" height="720"></li>
+                                    <li><img src="img/winforms/detalle.jpg" alt="Detalle de un artículo con su galería de imágenes" loading="lazy" width="1280" height="720"></li>
+                                    <li><img src="img/winforms/eliminar.jpg" alt="Confirmación antes de eliminar un artículo" loading="lazy" width="1280" height="720"></li>
+                                </ul>
+                            </div>
+                            <div class="vitrina-texto">
+                                <h4 data-i18n="proyectos.contiene">Contiene</h4>
+                                <ul class="lista-caracteristicas">
+                                    <li data-i18n="winforms.c1">Alta, baja y modificación de artículos con validación de datos.</li>
+                                    <li data-i18n="winforms.c2">Búsqueda con filtros combinados y galería de imágenes por artículo.</li>
+                                    <li data-i18n="winforms.c3">Administración de marcas y categorías, con arquitectura en capas.</li>
+                                </ul>
+                                <div class="botones-proyecto">
+                                    <button class="boton boton-principal" data-video="video/winforms.mp4" data-i18n="botones.video">Ver video</button>
+                                    <a href="https://github.com/Santiago-schmidt/tp-winform-equipo-b" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -306,99 +312,117 @@
 
                     <!-- ===== VITRINA: NO SOUP FOR YOU (JUEGO DE DADOS EN CONSOLA) ===== -->
                     <article class="proyecto-vitrina vitrina-nsfy">
-                        <div class="vitrina-medios">
-                            <button class="vitrina-imagen" data-video="video/nsfy.mp4" aria-label="Ver el video de No Soup For You">
-                                <img src="img/nsfy/portada.jpg" alt="Portada de No Soup For You con el título y el plato de sopa" loading="lazy" width="1280" height="720">
-                                <span class="icono-play" aria-hidden="true"></span>
-                            </button>
-                            <ul class="vitrina-miniaturas">
-                                <li><img src="img/nsfy/menu.jpg" alt="Menú principal de No Soup For You con el cocinero" loading="lazy" width="1280" height="720"></li>
-                                <li><img src="img/nsfy/no-soup.jpg" alt="Tirada sin combinaciones: el cocinero dice NO SOUP FOR YOU" loading="lazy" width="1280" height="720"></li>
-                                <li><img src="img/nsfy/resultados.jpg" alt="Tabla de resultados finales con los hitos de cada jugador" loading="lazy" width="1280" height="720"></li>
-                            </ul>
+                        <div class="vitrina-portada">
+                            <div class="vitrina-portada-texto">
+                                <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++ · <span data-i18n="chips.consola">Consola</span></p>
+                                <h3>No Soup For You</h3>
+                                <p class="vitrina-descripcion" data-i18n="nsfy.descripcion">Juego de dados por turnos para dos jugadores: cada combinación es un ingrediente de la sopa y, si una tirada no suma, llega el temido "No soup for you!".</p>
+                                <ul class="lista-chips">
+                                    <li class="chip">C++</li><li class="chip" data-i18n="chips.vectores">Vectores y matrices</li><li class="chip" data-i18n="chips.modulos">Módulos .h / .cpp</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="vitrina-texto">
-                            <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++ · <span data-i18n="chips.consola">Consola</span></p>
-                            <h3>No Soup For You</h3>
-                            <p data-i18n="nsfy.descripcion">Juego de dados por turnos para dos jugadores: cada combinación es un ingrediente de la sopa y, si una tirada no suma, llega el temido "No soup for you!".</p>
-                            <h4 data-i18n="proyectos.contiene">Contiene</h4>
-                            <ul class="lista-caracteristicas">
-                                <li data-i18n="nsfy.c1">Detección de combinaciones con 6 dados: pares, tríos, tres pares y escalera.</li>
-                                <li data-i18n="nsfy.c2">Decisión de riesgo en cada tirada (retirar o seguir) y un sistema de confianza que limita los puntos por ronda.</li>
-                                <li data-i18n="nsfy.c3">Hitos al final de la partida, tabla de resultados y estadísticas de la última partida.</li>
-                            </ul>
-                            <ul class="lista-chips">
-                                <li class="chip">C++</li><li class="chip" data-i18n="chips.vectores">Vectores y matrices</li><li class="chip" data-i18n="chips.modulos">Módulos .h / .cpp</li>
-                            </ul>
-                            <div class="botones-proyecto">
-                                <button class="boton boton-principal" data-video="video/nsfy.mp4" data-i18n="botones.video">Ver video</button>
-                                <a href="https://github.com/FedericoWachenschwan/no-soup-for-you" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                        <div class="vitrina-cuerpo">
+                            <div class="vitrina-medios">
+                                <button class="vitrina-imagen" data-video="video/nsfy.mp4" aria-label="Ver el video de No Soup For You">
+                                    <img src="img/nsfy/portada.jpg" alt="Portada de No Soup For You con el título y el plato de sopa" loading="lazy" width="1280" height="720">
+                                    <span class="icono-play" aria-hidden="true"></span>
+                                </button>
+                                <ul class="vitrina-miniaturas">
+                                    <li><img src="img/nsfy/menu.jpg" alt="Menú principal de No Soup For You con el cocinero" loading="lazy" width="1280" height="720"></li>
+                                    <li><img src="img/nsfy/no-soup.jpg" alt="Tirada sin combinaciones: el cocinero dice NO SOUP FOR YOU" loading="lazy" width="1280" height="720"></li>
+                                    <li><img src="img/nsfy/resultados.jpg" alt="Tabla de resultados finales con los hitos de cada jugador" loading="lazy" width="1280" height="720"></li>
+                                </ul>
+                            </div>
+                            <div class="vitrina-texto">
+                                <h4 data-i18n="proyectos.contiene">Contiene</h4>
+                                <ul class="lista-caracteristicas">
+                                    <li data-i18n="nsfy.c1">Detección de combinaciones con 6 dados: pares, tríos, tres pares y escalera.</li>
+                                    <li data-i18n="nsfy.c2">Decisión de riesgo en cada tirada (retirar o seguir) y un sistema de confianza que limita los puntos por ronda.</li>
+                                    <li data-i18n="nsfy.c3">Hitos al final de la partida, tabla de resultados y estadísticas de la última partida.</li>
+                                </ul>
+                                <div class="botones-proyecto">
+                                    <button class="boton boton-principal" data-video="video/nsfy.mp4" data-i18n="botones.video">Ver video</button>
+                                    <a href="https://github.com/FedericoWachenschwan/no-soup-for-you" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- ===== VITRINA: ENFRENDADOS (JUEGO DE DADOS EN CONSOLA) ===== -->
                     <article class="proyecto-vitrina vitrina-enfrendados">
-                        <div class="vitrina-medios">
-                            <button class="vitrina-imagen" data-video="video/enfrendados.mp4" aria-label="Ver el video de Enfrendados">
-                                <img src="img/enfrendados/menu.jpg" alt="Menú principal de Enfrendados" loading="lazy" width="1280" height="720">
-                                <span class="icono-play" aria-hidden="true"></span>
-                            </button>
-                            <ul class="vitrina-miniaturas">
-                                <li><img src="img/enfrendados/turno.jpg" alt="Turno de Enfrendados con los dados dibujados en la consola" loading="lazy" width="1280" height="720"></li>
-                                <li><img src="img/enfrendados/resultado.jpg" alt="Resultado de una jugada" loading="lazy" width="1280" height="720"></li>
-                                <li><img src="img/enfrendados/fin.jpg" alt="Pantalla de fin de partida" loading="lazy" width="1280" height="720"></li>
-                            </ul>
+                        <div class="vitrina-portada">
+                            <div class="vitrina-portada-texto">
+                                <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++ · <span data-i18n="chips.consola">Consola</span></p>
+                                <h3>Enfrendados</h3>
+                                <p class="vitrina-descripcion" data-i18n="enfrendados.descripcion">Juego de dados por turnos para consola: dos dados de 12 caras definen un objetivo y cada jugador debe combinar dados que sumen exactamente ese valor.</p>
+                                <ul class="lista-chips">
+                                    <li class="chip">C++</li><li class="chip" data-i18n="chips.funciones">Funciones y vectores</li><li class="chip" data-i18n="chips.consola">Consola</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="vitrina-texto">
-                            <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++ · <span data-i18n="chips.consola">Consola</span></p>
-                            <h3>Enfrendados</h3>
-                            <p data-i18n="enfrendados.descripcion">Juego de dados por turnos para consola: dos dados de 12 caras definen un objetivo y cada jugador debe combinar dados que sumen exactamente ese valor.</p>
-                            <h4 data-i18n="proyectos.contiene">Contiene</h4>
-                            <ul class="lista-caracteristicas">
-                                <li data-i18n="enfrendados.c1">Turnos en dos pasos con validación de cada elección.</li>
-                                <li data-i18n="enfrendados.c2">Sistema de penalizaciones y desempate por "última oportunidad".</li>
-                                <li data-i18n="enfrendados.c3">Interfaz de consola con recuadros, colores y dados dibujados.</li>
-                            </ul>
-                            <ul class="lista-chips">
-                                <li class="chip">C++</li><li class="chip" data-i18n="chips.funciones">Funciones y vectores</li><li class="chip" data-i18n="chips.consola">Consola</li>
-                            </ul>
-                            <div class="botones-proyecto">
-                                <button class="boton boton-principal" data-video="video/enfrendados.mp4" data-i18n="botones.video">Ver video</button>
-                                <a href="https://github.com/FedericoWachenschwan/enfrendados" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                        <div class="vitrina-cuerpo">
+                            <div class="vitrina-medios">
+                                <button class="vitrina-imagen" data-video="video/enfrendados.mp4" aria-label="Ver el video de Enfrendados">
+                                    <img src="img/enfrendados/menu.jpg" alt="Menú principal de Enfrendados" loading="lazy" width="1280" height="720">
+                                    <span class="icono-play" aria-hidden="true"></span>
+                                </button>
+                                <ul class="vitrina-miniaturas">
+                                    <li><img src="img/enfrendados/turno.jpg" alt="Turno de Enfrendados con los dados dibujados en la consola" loading="lazy" width="1280" height="720"></li>
+                                    <li><img src="img/enfrendados/resultado.jpg" alt="Resultado de una jugada" loading="lazy" width="1280" height="720"></li>
+                                    <li><img src="img/enfrendados/fin.jpg" alt="Pantalla de fin de partida" loading="lazy" width="1280" height="720"></li>
+                                </ul>
+                            </div>
+                            <div class="vitrina-texto">
+                                <h4 data-i18n="proyectos.contiene">Contiene</h4>
+                                <ul class="lista-caracteristicas">
+                                    <li data-i18n="enfrendados.c1">Turnos en dos pasos con validación de cada elección.</li>
+                                    <li data-i18n="enfrendados.c2">Sistema de penalizaciones y desempate por "última oportunidad".</li>
+                                    <li data-i18n="enfrendados.c3">Interfaz de consola con recuadros, colores y dados dibujados.</li>
+                                </ul>
+                                <div class="botones-proyecto">
+                                    <button class="boton boton-principal" data-video="video/enfrendados.mp4" data-i18n="botones.video">Ver video</button>
+                                    <a href="https://github.com/FedericoWachenschwan/enfrendados" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- ===== VITRINA: GENERALA (JUEGO DE DADOS EN CONSOLA) ===== -->
                     <article class="proyecto-vitrina vitrina-generala">
-                        <div class="vitrina-medios">
-                            <button class="vitrina-imagen" data-video="video/generala.mp4" aria-label="Ver el video de la Generala">
-                                <img src="img/generala/turno.jpg" alt="Turno de la Generala con los dados guardados y la planilla de puntos" loading="lazy" width="1280" height="720">
-                                <span class="icono-play" aria-hidden="true"></span>
-                            </button>
-                            <ul class="vitrina-miniaturas">
-                                <li><img src="img/generala/menu.jpg" alt="Menú principal de la Generala" loading="lazy" width="1280" height="720"></li>
-                                <li><img src="img/generala/planilla.jpg" alt="Planilla para anotar la jugada" loading="lazy" width="1280" height="720"></li>
-                                <li><img src="img/generala/fin.jpg" alt="Pantalla de fin de partida de la Generala" loading="lazy" width="1280" height="720"></li>
-                            </ul>
+                        <div class="vitrina-portada">
+                            <div class="vitrina-portada-texto">
+                                <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++ · <span data-i18n="chips.consola">Consola</span></p>
+                                <h3>Generala</h3>
+                                <p class="vitrina-descripcion" data-i18n="generala.descripcion">Versión para consola del clásico juego de dados, para uno o dos jugadores, con planilla de puntaje completa.</p>
+                                <ul class="lista-chips">
+                                    <li class="chip">C++</li><li class="chip">Structs</li><li class="chip" data-i18n="chips.modulos">Módulos .h / .cpp</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="vitrina-texto">
-                            <p class="modalidad"><span data-i18n="modalidad.individual">Individual</span> · C++ · <span data-i18n="chips.consola">Consola</span></p>
-                            <h3>Generala</h3>
-                            <p data-i18n="generala.descripcion">Versión para consola del clásico juego de dados, para uno o dos jugadores, con planilla de puntaje completa.</p>
-                            <h4 data-i18n="proyectos.contiene">Contiene</h4>
-                            <ul class="lista-caracteristicas">
-                                <li data-i18n="generala.c1">10 rondas con 3 tiradas por turno y selección de los dados a conservar.</li>
-                                <li data-i18n="generala.c2">Detección de las 10 jugadas, bonificación por jugada servida y récord de la sesión.</li>
-                                <li data-i18n="generala.c3">Código separado en módulos: lógica del juego y dibujo en pantalla.</li>
-                            </ul>
-                            <ul class="lista-chips">
-                                <li class="chip">C++</li><li class="chip">Structs</li><li class="chip" data-i18n="chips.modulos">Módulos .h / .cpp</li>
-                            </ul>
-                            <div class="botones-proyecto">
-                                <button class="boton boton-principal" data-video="video/generala.mp4" data-i18n="botones.video">Ver video</button>
-                                <a href="https://github.com/FedericoWachenschwan/generala" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                        <div class="vitrina-cuerpo">
+                            <div class="vitrina-medios">
+                                <button class="vitrina-imagen" data-video="video/generala.mp4" aria-label="Ver el video de la Generala">
+                                    <img src="img/generala/turno.jpg" alt="Turno de la Generala con los dados guardados y la planilla de puntos" loading="lazy" width="1280" height="720">
+                                    <span class="icono-play" aria-hidden="true"></span>
+                                </button>
+                                <ul class="vitrina-miniaturas">
+                                    <li><img src="img/generala/menu.jpg" alt="Menú principal de la Generala" loading="lazy" width="1280" height="720"></li>
+                                    <li><img src="img/generala/planilla.jpg" alt="Planilla para anotar la jugada" loading="lazy" width="1280" height="720"></li>
+                                    <li><img src="img/generala/fin.jpg" alt="Pantalla de fin de partida de la Generala" loading="lazy" width="1280" height="720"></li>
+                                </ul>
+                            </div>
+                            <div class="vitrina-texto">
+                                <h4 data-i18n="proyectos.contiene">Contiene</h4>
+                                <ul class="lista-caracteristicas">
+                                    <li data-i18n="generala.c1">10 rondas con 3 tiradas por turno y selección de los dados a conservar.</li>
+                                    <li data-i18n="generala.c2">Detección de las 10 jugadas, bonificación por jugada servida y récord de la sesión.</li>
+                                    <li data-i18n="generala.c3">Código separado en módulos: lógica del juego y dibujo en pantalla.</li>
+                                </ul>
+                                <div class="botones-proyecto">
+                                    <button class="boton boton-principal" data-video="video/generala.mp4" data-i18n="botones.video">Ver video</button>
+                                    <a href="https://github.com/FedericoWachenschwan/generala" class="boton boton-secundario" target="_blank" rel="noopener" data-i18n="botones.codigo">Ver código</a>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -555,6 +579,6 @@
         <video id="reproductor" controls playsinline preload="none"></video>
     </dialog>
 
-    <script src="js/script.js?v=2026100101"></script>
+    <script src="js/script.js?v=2026100102"></script>
 </body>
 </html>

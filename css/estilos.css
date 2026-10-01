@@ -812,50 +812,66 @@ textarea:focus-visible {
 }
 
 .proyecto-vitrina {
-    position: relative;
-    isolation: isolate;
     overflow: hidden;
+    border: 1px solid var(--color-linea);
+    border-top: 2px solid var(--color-proyecto, var(--color-acento));
+    border-radius: var(--radio);
+    background-color: var(--color-fondo-tarjetas);
+    box-shadow: var(--sombra);
+}
+
+/* Portada ilustrada de cada proyecto, con el texto sobre la parte oscura de la izquierda */
+.vitrina-portada {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 320px;
+    padding: 56px 48px;
+    background-position: right center;
+    background-size: cover;
+}
+
+.vitrina-portada::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(10, 10, 11, 0.95) 0%, rgba(10, 10, 11, 0.82) 36%, rgba(10, 10, 11, 0) 62%);
+}
+
+.vitrina-portada-texto {
+    position: relative;
+    max-width: min(520px, 46%);
+}
+
+.vitrina-portada h3 {
+    margin-bottom: 12px;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+}
+
+.vitrina-descripcion {
+    margin-bottom: 18px;
+    color: var(--color-texto);
+    font-size: 1rem;
+}
+
+/* Imagen de cada proyecto (renders hechos a medida) y su color */
+.vitrina-winforms { --color-proyecto: #3B78FF; }
+.vitrina-winforms .vitrina-portada { background-image: url("../img/winforms/arte.jpg"); }
+.vitrina-nsfy { --color-proyecto: #E8B04B; }
+.vitrina-nsfy .vitrina-portada { background-image: url("../img/nsfy/arte.jpg"); }
+.vitrina-enfrendados { --color-proyecto: #E74856; }
+.vitrina-enfrendados .vitrina-portada { background-image: url("../img/enfrendados/arte.jpg"); }
+.vitrina-generala { --color-proyecto: #16C60C; }
+.vitrina-generala .vitrina-portada { background-image: url("../img/generala/arte.jpg"); }
+
+/* Debajo de la portada: imágenes y video a un lado, características y botones al otro */
+.vitrina-cuerpo {
     display: grid;
     grid-template-columns: 1.25fr 1fr;
     align-items: center;
-    gap: 56px;
-    padding: 48px;
-    border: 1px solid var(--color-linea);
-    border-top: 2px solid var(--color-proyecto, var(--color-acento));
+    gap: 48px;
+    padding: 44px 48px;
 }
-
-/* Fondo de cada proyecto: una imagen propia, desenfocada y oscurecida para que el texto se lea */
-.proyecto-vitrina::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background-position: center;
-    background-size: cover;
-    filter: blur(3px) saturate(1.2);
-    transform: scale(1.06);
-}
-
-/* Capa oscura con un tono del color del proyecto */
-.proyecto-vitrina::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background:
-        linear-gradient(90deg, rgba(10, 10, 11, 0.95) 0%, rgba(10, 10, 11, 0.84) 50%, rgba(10, 10, 11, 0.95) 100%),
-        linear-gradient(0deg, color-mix(in srgb, var(--color-proyecto, transparent) 22%, transparent), transparent 70%);
-}
-
-/* Imagen y color de cada proyecto */
-.vitrina-winforms { --color-proyecto: #3B78FF; }
-.vitrina-winforms::before { background-image: url("../img/winforms/detalle.jpg"); }
-.vitrina-nsfy { --color-proyecto: #E8B04B; }
-.vitrina-nsfy::before { background-image: url("../img/nsfy/portada.jpg"); }
-.vitrina-enfrendados { --color-proyecto: #E74856; }
-.vitrina-enfrendados::before { background-image: url("../img/enfrendados/menu.jpg"); }
-.vitrina-generala { --color-proyecto: #16C60C; }
-.vitrina-generala::before { background-image: url("../img/generala/planilla.jpg"); }
 
 /* El color del proyecto también marca la etiqueta de arriba y las viñetas */
 .proyecto-vitrina .modalidad,
@@ -955,18 +971,8 @@ textarea:focus-visible {
     filter: none;
 }
 
-.vitrina-texto h3 {
-    margin-bottom: 14px;
-    font-size: clamp(2.2rem, 4vw, 3rem);
-}
-
-.vitrina-texto > p:not(.modalidad) {
-    color: var(--color-texto-suave);
-    font-size: 1rem;
-}
-
 .vitrina-texto h4 {
-    margin: 22px 0 12px;
+    margin: 0 0 14px;
     color: var(--color-texto);
     font-family: var(--fuente-texto);
     font-size: 0.72rem;
@@ -979,8 +985,8 @@ textarea:focus-visible {
     margin-bottom: 22px;
 }
 
-.vitrina-texto .lista-chips {
-    margin-bottom: 28px;
+.vitrina-portada .lista-chips {
+    margin-bottom: 0;
 }
 
 .botones-proyecto {
@@ -1513,7 +1519,7 @@ textarea:focus-visible {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .proyecto-vitrina {
+    .vitrina-cuerpo {
         grid-template-columns: 1fr;
         gap: 32px;
     }
@@ -1648,8 +1654,26 @@ textarea:focus-visible {
         gap: 32px;
     }
 
-    .proyecto-vitrina {
-        padding: 24px 20px;
+    .vitrina-portada-texto {
+        max-width: none;
+    }
+
+    /* En el celular la ilustración va arriba y el texto debajo */
+    .vitrina-portada {
+        min-height: 0;
+        padding: 190px 20px 28px;
+        background-color: var(--color-fondo-tarjetas);
+        background-position: 72% top;
+        background-repeat: no-repeat;
+        background-size: auto 220px;
+    }
+
+    .vitrina-portada::before {
+        background: linear-gradient(180deg, rgba(10, 10, 11, 0) 120px, var(--color-fondo-tarjetas) 220px);
+    }
+
+    .vitrina-cuerpo {
+        padding: 28px 20px;
     }
 
     .contadores-practica {
