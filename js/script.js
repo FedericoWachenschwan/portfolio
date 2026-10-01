@@ -376,6 +376,114 @@ for (const seccion of seccionesConLink) {
     observador.observe(seccion);
 }
 
+/* ===== FONDO ANIMADO DE REDES: PUNTOS QUE SE MUEVEN Y SE CONECTAN ===== */
+const lienzoRed = document.querySelector(".fondo-red");
+if (lienzoRed) {
+    const contexto = lienzoRed.getContext("2d");
+    const colores = ["224, 57, 63", "59, 142, 232", "236, 231, 223"];   // carmesí, azul de LinkedIn, blanco papel
+    const sinMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const distanciaMaxima = 140;
+    let puntos = [];
+    let ancho = 0;
+    let alto = 0;
+    let animando = false;
+    let mouse = null;
+
+    function prepararRed() {
+        const escala = Math.min(window.devicePixelRatio || 1, 2);
+        ancho = lienzoRed.clientWidth;
+        alto = lienzoRed.clientHeight;
+        lienzoRed.width = ancho * escala;
+        lienzoRed.height = alto * escala;
+        contexto.setTransform(escala, 0, 0, escala, 0, 0);
+        const cantidad = Math.min(110, Math.round((ancho * alto) / 12000));
+        puntos = [];
+        for (let i = 0; i < cantidad; i++) {
+            const azar = Math.random();
+            puntos.push({
+                x: Math.random() * ancho,
+                y: Math.random() * alto,
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.4,
+                radio: 1 + Math.random() * 1.8,
+                color: colores[azar < 0.6 ? 0 : azar < 0.8 ? 1 : 2]
+            });
+        }
+    }
+
+    function dibujarRed() {
+        contexto.clearRect(0, 0, ancho, alto);
+        for (const p of puntos) {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > ancho) p.vx *= -1;
+            if (p.y < 0 || p.y > alto) p.vy *= -1;
+        }
+        // Líneas entre puntos cercanos: más fuertes cuanto más cerca están
+        for (let i = 0; i < puntos.length; i++) {
+            for (let k = i + 1; k < puntos.length; k++) {
+                const a = puntos[i];
+                const b = puntos[k];
+                const distancia = Math.hypot(a.x - b.x, a.y - b.y);
+                if (distancia < distanciaMaxima) {
+                    contexto.strokeStyle = "rgba(" + a.color + ", " + (1 - distancia / distanciaMaxima) * 0.32 + ")";
+                    contexto.lineWidth = 1;
+                    contexto.beginPath();
+                    contexto.moveTo(a.x, a.y);
+                    contexto.lineTo(b.x, b.y);
+                    contexto.stroke();
+                }
+            }
+            // El mouse también se conecta con los puntos cercanos
+            if (mouse) {
+                const p = puntos[i];
+                const distancia = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+                if (distancia < 180) {
+                    contexto.strokeStyle = "rgba(224, 57, 63, " + (1 - distancia / 180) * 0.6 + ")";
+                    contexto.beginPath();
+                    contexto.moveTo(p.x, p.y);
+                    contexto.lineTo(mouse.x, mouse.y);
+                    contexto.stroke();
+                }
+            }
+        }
+        for (const p of puntos) {
+            contexto.fillStyle = "rgba(" + p.color + ", 0.85)";
+            contexto.beginPath();
+            contexto.arc(p.x, p.y, p.radio, 0, Math.PI * 2);
+            contexto.fill();
+        }
+        if (animando) {
+            requestAnimationFrame(dibujarRed);
+        }
+    }
+
+    prepararRed();
+    if (sinMovimiento) {
+        dibujarRed();
+    } else {
+        // Solo se anima mientras la sección está en pantalla
+        new IntersectionObserver(function (entradas) {
+            const visible = entradas[0].isIntersecting;
+            if (visible && !animando) {
+                animando = true;
+                requestAnimationFrame(dibujarRed);
+            } else if (!visible) {
+                animando = false;
+            }
+        }).observe(lienzoRed);
+    }
+    window.addEventListener("resize", prepararRed);
+    const seccionRedes = lienzoRed.parentElement;
+    seccionRedes.addEventListener("pointermove", function (evento) {
+        const caja = lienzoRed.getBoundingClientRect();
+        mouse = { x: evento.clientX - caja.left, y: evento.clientY - caja.top };
+    });
+    seccionRedes.addEventListener("pointerleave", function () {
+        mouse = null;
+    });
+}
+
 /* ===== LUZ QUE SIGUE AL MOUSE EN LAS TARJETAS ===== */
 // Guarda la posición del mouse dentro de la tarjeta; el CSS dibuja un brillo suave en ese punto
 for (const tarjeta of document.querySelectorAll(".con-luz")) {

@@ -574,23 +574,59 @@ textarea:focus-visible {
     line-height: 0.82;
 }
 
+/* Ilustración de fondo: el escritorio con la notebook, el café y los libros */
+.seccion-sobre-mi {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.seccion-sobre-mi::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(90deg, var(--color-fondo-alterno) 18%, rgba(15, 15, 17, 0.88) 46%, rgba(15, 15, 17, 0.25) 80%),
+        url("../img/sobre-mi/escritorio.jpg") right -180px center / auto 100% no-repeat;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+    mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+/* Cada dato en una tarjeta translúcida */
+.sobre-mi-datos {
+    display: grid;
+    gap: 12px;
+}
+
 .sobre-mi-datos li {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--color-linea);
+    padding: 16px 18px;
+    border: 1px solid var(--color-linea);
+    border-left: 2px solid var(--color-acento);
+    border-radius: var(--radio);
+    background-color: rgba(19, 19, 21, 0.72);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     font-size: 0.95rem;
+    transition: border-color var(--transicion), translate var(--transicion), box-shadow var(--transicion);
 }
 
-.sobre-mi-datos li:first-child {
-    border-top: 1px solid var(--color-linea);
+.sobre-mi-datos li:hover {
+    border-color: rgba(224, 57, 63, 0.6);
+    box-shadow: 0 12px 30px -16px rgba(224, 57, 63, 0.6);
+    translate: -6px 0;
 }
 
 .icono-dato {
     flex-shrink: 0;
-    width: 22px;
-    height: 22px;
+    width: 40px;
+    height: 40px;
+    padding: 9px;
+    border-radius: 50%;
+    background-color: rgba(224, 57, 63, 0.12);
     fill: none;
     stroke: var(--color-acento);
     stroke-width: 1.4;
@@ -1357,6 +1393,30 @@ textarea:focus-visible {
 }
 
 /* ===== SECCIÓN REDES ===== */
+/* Fondo con un resplandor carmesí y otro azul, y la red animada encima */
+.seccion-redes {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse 60% 70% at 12% 10%, rgba(163, 22, 28, 0.22), transparent 70%),
+        radial-gradient(ellipse 50% 60% at 92% 95%, rgba(59, 142, 232, 0.12), transparent 70%),
+        var(--color-fondo);
+}
+
+.fondo-red {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+/* El título de Redes con un brillo suave */
+.seccion-redes .titulo-seccion span:last-child {
+    text-shadow: 0 0 28px rgba(224, 57, 63, 0.45);
+}
+
 .grilla-redes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1974,6 +2034,12 @@ textarea:focus-visible {
 
     .contadores-practica {
         grid-template-columns: 1fr;
+    }
+
+    .seccion-sobre-mi::before {
+        background:
+            linear-gradient(180deg, rgba(15, 15, 17, 0.6), rgba(15, 15, 17, 0.92)),
+            url("../img/sobre-mi/escritorio.jpg") 70% center / auto 100% no-repeat;
     }
 
     .seccion-practica::before {
