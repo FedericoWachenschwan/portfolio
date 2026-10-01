@@ -979,7 +979,7 @@ textarea:focus-visible {
 /* ===== SECCIÓN PRÁCTICA: CONTADORES ===== */
 .contadores-practica {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     margin-bottom: 48px;
     border-top: 1px solid var(--color-linea);
     border-bottom: 1px solid var(--color-linea);
@@ -1587,6 +1587,15 @@ textarea:focus-visible {
 
     .vitrina-proyectos {
         gap: 64px;
+    }
+
+    .contadores-practica {
+        grid-template-columns: 1fr;
+    }
+
+    .contadores-practica li + li {
+        border-left: none;
+        border-top: 1px solid var(--color-linea);
     }
 
     /* En el celular el texto del video va debajo de la imagen, no encima */
